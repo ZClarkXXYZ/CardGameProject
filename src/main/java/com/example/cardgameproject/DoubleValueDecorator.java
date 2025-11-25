@@ -1,5 +1,14 @@
 package com.example.cardgameproject;
 
-public class DoubleValueDecorator {
+public class DoubleValueDecorator extends CardDecorator{
     //worth x2 value for recipes
+    public DoubleValueDecorator(Card card) {
+        super(card);
+    }
+
+    @Override
+    public String giveCardValue() {
+        return(decoratedCard.giveCardValue() + decoratedCard.giveCardValue());
+    }
+
 }

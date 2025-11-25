@@ -11,4 +11,10 @@ public abstract class CardDecorator implements CardInterface{
     public String giveCardValue() {
         return decoratedCard.giveCardValue();
     }
+
+    @Override
+    public void additionalPlayedEffects() {decoratedCard.additionalPlayedEffects();};
+
+    @Override
+    public void additionalDiscardEffects() {decoratedCard.additionalDiscardEffects();};
 }

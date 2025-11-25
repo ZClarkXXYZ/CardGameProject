@@ -14,19 +14,19 @@
         </ImageView>
         <VBox prefHeight="415.0" prefWidth="700.0">
             <children>
-                  <FlowPane alignment="CENTER" hgap="6.0" prefHeight="326.0" prefWidth="700.0">
+                  <FlowPane fx:id="questFlowPlane" alignment="CENTER" hgap="6.0" prefHeight="326.0" prefWidth="700.0">
                <children>
-                  <Label prefHeight="90.0" prefWidth="164.0" text="Quest 1: Three 1/4 Silverback Monkeys Reward +4 gold" wrapText="true">
+                  <Label fx:id="quest1Label" prefHeight="90.0" prefWidth="164.0" text="Quest 1: Three 1/4 Silverback Monkeys Reward +4 gold" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Label>
-                  <Label layoutX="278.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="Quest: Two 5/10 Trolls Reward Gold Card" wrapText="true">
+                  <Label fx:id="quest2Label" layoutX="278.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="Quest: Two 5/10 Trolls Reward Gold Card" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Label>
-                  <Label layoutX="363.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="Quest: Seven 8/9 Hungries Reward Make 2 random cards Glass" wrapText="true">
+                  <Label fx:id="quest3Label" layoutX="363.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="Quest: Seven 8/9 Hungries Reward Make 2 random cards Glass" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -37,7 +37,7 @@
                <children>
                   <FlowPane alignment="CENTER" hgap="300.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="View Deck" />
+                        <Button fx:id="check" mnemonicParsing="false" text="View Deck" />
                         <Button mnemonicParsing="false" text="View Units" />
                      </children>
                   </FlowPane>

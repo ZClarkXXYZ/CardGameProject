@@ -17,7 +17,7 @@
          <children>
             <VBox prefHeight="195.0" prefWidth="600.0">
                <children>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Recipes" text="Recipe text here (can not really write it here ahead of time, will need to use code because editor isn't good to make a sample of what it would look like)" wrapText="true">
+                  <TextArea fx:id="recipeTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Recipes" text="Recipe text here (can not really write it here ahead of time, will need to use code because editor isn't good to make a sample of what it would look like)" wrapText="true">
                      <effect>
                         <InnerShadow />
                      </effect>
@@ -25,7 +25,7 @@
                </children></VBox>
             <VBox prefHeight="211.0" prefWidth="700.0">
                <children>
-                  <FlowPane alignment="CENTER" hgap="6.0" prefHeight="200.0" prefWidth="200.0">
+                  <FlowPane fx:id="handFlowPane" alignment="CENTER" hgap="6.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="116.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -133,16 +133,16 @@
                <children>
                   <FlowPane alignment="TOP_CENTER" cacheShape="false" hgap="40.0" prefHeight="127.0" prefWidth="700.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Check Deck" />
-                        <ImageView id="playHandButton" fitHeight="89.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="viewDeckButton" mnemonicParsing="false" text="View Deck" />
+                        <ImageView id="playHandButton" fx:id="playHandButton" fitHeight="89.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/playButton.png" />
                            </image></ImageView>
-                        <ImageView id="buttonVBox" fitHeight="80.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="buttonVBox" fx:id="discardButton" fitHeight="80.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/discardButton.png" />
                            </image></ImageView>
-                        <Button mnemonicParsing="false" text="Check Units" />
+                        <Button fx:id="checkUnitsButton" mnemonicParsing="false" text="View Units" />
                      </children>
                      <opaqueInsets>
                         <Insets />

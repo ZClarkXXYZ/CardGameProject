@@ -4,5 +4,7 @@ public interface CardInterface {
 
     String giveCardValue();
 
-    void additionalCardEffects();
+    void additionalPlayedEffects();
+
+    void additionalDiscardEffects();
 }
