@@ -11,7 +11,7 @@ public class Deck {
     public void addCard(Card card) {
         deck.add(card);
         if (deckIndexes.size() > 0) {
-            deckIndexes.add(deckIndexes.get(deckIndexes.size()));
+            deckIndexes.add(deckIndexes.get(deckIndexes.size() - 1));
         }
         else {
             deckIndexes.add(0);
