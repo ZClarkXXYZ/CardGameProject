@@ -142,7 +142,7 @@
                            <image>
                               <Image url="@images/discardButton.png" />
                            </image></ImageView>
-                        <Button fx:id="checkUnitsButton" mnemonicParsing="false" text="View Units" />
+                        <Button fx:id="viewUnitsButton" mnemonicParsing="false" text="View Units" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -151,5 +151,6 @@
                </children></VBox>
          </children>
       </VBox>
+      <TextArea fx:id="overlayTextArea" editable="false" layoutY="1.0" prefHeight="515.0" prefWidth="706.0" visible="false" />
    </children>
 </AnchorPane>

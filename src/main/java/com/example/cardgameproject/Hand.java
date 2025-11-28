@@ -38,4 +38,10 @@ public class Hand {
         return selectedCards;
     }
 
+    public void printHand() {
+        for (int i = 0; i < cards.size(); i++) {
+            System.out.println(cards.get(i).getCardName());
+        }
+    }
+
 }

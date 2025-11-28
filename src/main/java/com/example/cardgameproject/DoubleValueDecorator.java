@@ -11,4 +11,8 @@ public class DoubleValueDecorator extends CardDecorator{
         return(decoratedCard.giveCardValue() + decoratedCard.giveCardValue());
     }
 
+    @Override
+    public String getCardName() {
+        return("Shiny " + decoratedCard.getCardName());
+    }
 }

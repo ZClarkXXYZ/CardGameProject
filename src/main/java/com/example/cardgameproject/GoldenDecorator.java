@@ -16,4 +16,9 @@ public class GoldenDecorator extends CardDecorator{
         //GameModel.setResource('gold', 0) // Remove all gold when discarded //Not yet implemented
     }
 
+    @Override
+    public String getCardName() {
+        return("Golden " + decoratedCard.getCardName());
+    }
+
 }

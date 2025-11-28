@@ -17,4 +17,7 @@ public abstract class CardDecorator implements CardInterface{
 
     @Override
     public void additionalDiscardEffects() {decoratedCard.additionalDiscardEffects();};
+
+    @Override
+    public String getCardName() {return decoratedCard.getCardName();};
 }

@@ -7,4 +7,6 @@ public interface CardInterface {
     void additionalPlayedEffects();
 
     void additionalDiscardEffects();
+
+    String getCardName();
 }

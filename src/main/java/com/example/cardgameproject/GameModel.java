@@ -13,11 +13,27 @@ public class GameModel {
 
     private List<Recipe> recipes;
 
-    private int handSize = 5;
+    private int handSize;
+    private int maxPlays;
+    private int playsLeft;
+    private int maxDiscards;
+    private int discardsLeft;
+
+    private int gold;
 
 
 
     public void gameInitialize() {
+        //set starting variables
+        handSize = 5;
+        maxPlays = 3;
+        maxDiscards = 2;
+
+        discardsLeft = maxDiscards;
+        playsLeft = maxPlays;
+
+        gold = 0;
+
         //Make starting deck
         makeStartingDeck();
 
@@ -27,14 +43,19 @@ public class GameModel {
         //Get list of recipes
         getPossibleRecipes();
 
+        drawHand();
     }
 
 
 
 
 
-    public void drawHand(int handSize) {
+    public void drawHand() {
         //draw X cards to hand from deck
+        for (int i = 0; i < handSize; i++) {
+            hand.addCard(deck.drawCard());
+        }
+        hand.printHand(); //testing print
     };
 
 

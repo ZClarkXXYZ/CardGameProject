@@ -38,9 +38,14 @@ public class GameController implements Initializable{
     @FXML
     private FlowPane shopFlowPane;
 
+    @FXML
+    private TextArea overlayTextArea;
+
+    GameModel game = new GameModel();
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        game.gameInitialize();
 
         viewDeckButton.setOnAction(Event -> {
             //view the deck
@@ -58,18 +63,42 @@ public class GameController implements Initializable{
             //view units
         });
 
+        overlayTextArea.setVisible(false);
+
+
     }
 
 
-    public void updateHand() {}
+    public void updateHand() {
+        //update the hand
+    }
+    public void updateRecipeArea() {
+        //update recipe area with able recipes
+    }
+    public void updateShopArea() {
+        //update each shop label with random shop item
+    }
+    public void updateQuestArea() {
+        //update each quest label with random quest
+    }
+    public void showDeck() {
+        overlayTextArea.setText("");
+        //set text to current deck
+    }
+    public void showUnits() {
+        overlayTextArea.setText("");
+        //set text to current army
+    }
 
-    public void updateRecipeShopArea() {}
+    public void modifyCardImage() {
+        //add effects, and get correct card image
 
 
-
-
-
-
-
-
+        /*image effects:
+        All have dropshadow
+        double gets bloom effect:
+        golden gets SepiaTone
+        glass gets reflection
+        */
+    }
 }

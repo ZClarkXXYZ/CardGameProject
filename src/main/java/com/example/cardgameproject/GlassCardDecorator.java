@@ -14,4 +14,9 @@ public class GlassCardDecorator extends CardDecorator{
     public void additionalPlayedEffects() {
         //Deck.removeThisCard(card); //Not yet implemented
     }
+
+    @Override
+    public String getCardName() {
+        return("Glass " + decoratedCard.getCardName());
+    }
 }

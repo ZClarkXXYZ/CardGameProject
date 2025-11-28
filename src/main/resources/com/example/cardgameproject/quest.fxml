@@ -37,13 +37,14 @@
                <children>
                   <FlowPane alignment="CENTER" hgap="300.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="check" mnemonicParsing="false" text="View Deck" />
-                        <Button mnemonicParsing="false" text="View Units" />
+                        <Button fx:id="viewDeckButton" mnemonicParsing="false" text="View Deck" />
+                        <Button fx:id="viewUnitsButton" mnemonicParsing="false" text="View Units" />
                      </children>
                   </FlowPane>
                </children>
             </VBox>
             </children>
         </VBox>
+      <TextArea fx:id="overlayTextArea" editable="false" prefHeight="515.0" prefWidth="700.0" visible="false" />
     </children>
 </AnchorPane>
