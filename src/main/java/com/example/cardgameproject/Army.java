@@ -2,6 +2,7 @@ package com.example.cardgameproject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Army {
     private List<Unit> units;
@@ -19,6 +20,24 @@ public class Army {
     public void unitDeath(Unit unit) {
         units.remove(unit);
         notifyDeath(unit);
+    }
+
+    // these methods are for the BattleManager system
+    public Unit getRandomUnit() {
+        if (units.isEmpty()) {
+            return null;
+        }
+
+        Random random = new Random(); // create RNG object
+        return units.get(random.nextInt(units.size())); // return a random unit using the RNG object
+    }
+
+    public boolean hasUnits() {
+        return !units.isEmpty();
+    }
+
+    public int getUnitCount() {
+        return units.size();
     }
 
     public void addObserver(Observer observer) {

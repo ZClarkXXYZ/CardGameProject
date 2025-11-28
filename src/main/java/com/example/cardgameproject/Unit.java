@@ -11,7 +11,7 @@ public class Unit implements Observer {
 
     private Army army;
 
-    //TODO: finish private constructor with builder code
+    //TODO: finish private constructor with builder code - done
     Unit(UnitBuilder builder) {
         // Extract data from the builder
         this.name = builder.getName();
@@ -45,4 +45,22 @@ public class Unit implements Observer {
             army.unitDeath(this);
         }
     }
+
+    // new methods for BattleManager system
+
+    public String getName() {
+        return name;
+    }
+
+    public void takeDamage(int damage){
+        this.hp -= damage;
+        if (this.hp <= 0){
+            death();
+        }
+    }
+
+    public int getAttack() {return this.attack;}
+    public int getHP() {return this.hp;}
+
+    public boolean isAlive() {return this.hp > 0;}
 }
