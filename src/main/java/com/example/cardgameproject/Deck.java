@@ -32,7 +32,7 @@ public class Deck {
         if (deck.size() == 0) {
             return null;
         }
-        nextCardIndex =+ 1;
+        nextCardIndex = nextCardIndex + 1;
         if (nextCardIndex >= deck.size()) {
             shuffleDeck();
             nextCardIndex = 0;
@@ -43,7 +43,7 @@ public class Deck {
 
     //shuffleDeck
     public void shuffleDeck() {
-        for (int i = 0; i < deck.size()*2; i ++) {
+        for (int i = 0; i < deck.size()*3; i ++) {
             int j = random.nextInt(deck.size());
             Collections.swap(deck, i%(deck.size()), j);
         }

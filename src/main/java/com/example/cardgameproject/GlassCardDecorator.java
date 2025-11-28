@@ -12,7 +12,8 @@ public class GlassCardDecorator extends CardDecorator{
 
     @Override
     public void additionalPlayedEffects() {
-        //Deck.removeThisCard(card); //Not yet implemented
+        GameModel game = GameModel.getInstance();
+        game.removeCardFromDeck(decoratedCard);
     }
 
     @Override

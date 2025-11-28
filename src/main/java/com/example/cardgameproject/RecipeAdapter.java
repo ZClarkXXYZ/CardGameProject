@@ -17,17 +17,20 @@ public class RecipeAdapter {
     public RecipeAdapter() {
         turnCSVFileToString();
         splitCVSString();
-
         turnSplitStringToRecipes();
     }
 
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
 
 
     //Take split string, turn into arraylist of Recipes
     private void turnSplitStringToRecipes() {
-        for (int i = 0; i < splitString.length/columns; i = i + columns) {
-            recipes.add(new Recipe(splitString[i], splitString[i+1], Integer.valueOf(splitString[i+2]),Integer.valueOf(splitString[i+3]), splitString[i+4]));
-            recipes.getLast().printRecipe();
+        for (int i = 0; i < splitString.length/columns; i++) {
+            int j = i*columns;
+            recipes.add(new Recipe(splitString[j], splitString[j+1], Integer.valueOf(splitString[j+2]),Integer.valueOf(splitString[j+3]), splitString[j+4]));
+            //recipes.getLast().printRecipe();
         }
     }
 

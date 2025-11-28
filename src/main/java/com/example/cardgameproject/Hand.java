@@ -33,6 +33,10 @@ public class Hand {
         else {selectedCards.add(selectedCard);}
     }
 
+    public boolean isSelected(Card selectedCard) {
+        return selectedCards.contains(selectedCard);
+    }
+
 
     public List<Card> getSelectedCards() {
         return selectedCards;
@@ -43,5 +47,9 @@ public class Hand {
             System.out.println(cards.get(i).getCardName());
         }
     }
-
+    public void printSelectedCards() {
+        for (int i = 0; i < cards.size(); i++) {
+            System.out.println(selectedCards.get(i).getCardName());
+        }
+    }
 }

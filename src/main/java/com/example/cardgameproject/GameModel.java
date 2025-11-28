@@ -6,6 +6,20 @@ import java.util.List;
 public class GameModel {
     //This is the client class that connects to other classes to make a working game
 
+    //private static instance of GameModel
+    private static GameModel game;
+
+    private GameModel() {
+        //do nothing
+    }
+    public static GameModel getInstance() {
+        if (game == null) {
+            game = new GameModel();
+        }
+        return(game);
+    }
+
+
     private Deck deck = new Deck();
     private Hand hand = new Hand();
 
@@ -41,13 +55,10 @@ public class GameModel {
         //make starting army
 
         //Get list of recipes
-        getPossibleRecipes();
+        intializeRecipes();
 
         drawHand();
     }
-
-
-
 
 
     public void drawHand() {
@@ -55,13 +66,32 @@ public class GameModel {
         for (int i = 0; i < handSize; i++) {
             hand.addCard(deck.drawCard());
         }
-        hand.printHand(); //testing print
+        //hand.printHand(); //testing print
     };
+    public List<Card> getHand() {
+        return(hand.getHand());
+    }
 
+    public boolean isCardSelected(Card card) {
+        return(hand.isSelected(card));
+    }
 
+    public void selectCard(Card card) {
+        hand.toggleSelectedCard(card);
+        System.out.println("Toggled: " + card.getCardName());
+    }
 
-    public void getPossibleRecipes() {
+    public void intializeRecipes() {
         RecipeAdapter adapter = new RecipeAdapter();
+        recipes = adapter.getRecipes();
+    }
+    public List<Recipe> getRecipes() {
+        return(recipes);
+    }
+
+
+    public List<Card> getDeck() {
+        return(deck.getDeck());
     }
 
     public void makeStartingDeck() {
@@ -82,4 +112,19 @@ public class GameModel {
         deck.shuffleDeck();
     }
 
+
+    public void addGold(int moreGold) {
+        gold = gold + moreGold;
+    }
+    public void resetGold() {
+        gold = 0;
+    }
+    public int getGold() {
+        return gold;
+    }
+
+
+    public void removeCardFromDeck(Card card) {
+        deck.removeCard(card);
+    }
 }
