@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cardgameproject.GameController">
+    <children>
+        <ImageView fitHeight="515.0" fitWidth="700.0" pickOnBounds="true">
+            <image>
+                <Image url="@images/screenBackground.png" />
+            </image>
+        </ImageView>
+        <VBox prefHeight="515.0" prefWidth="700.0">
+            <children>
+                  <FlowPane fx:id="shopFlowPane" alignment="CENTER" hgap="6.0" prefHeight="487.0" prefWidth="700.0">
+               <children>
+                  <Label prefHeight="90.0" prefWidth="164.0" text="ShopItem 1: add card" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="278.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="Shop 2: +1 Discard/Hand" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="363.0" layoutY="128.0" prefHeight="90.0" prefWidth="164.0" text="ShopItem 3: ModifyRandomCard with Effect" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="448.0" layoutY="169.0" prefHeight="90.0" prefWidth="164.0" text="ShopItem 4: Random (Unit, card, buff units)" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+               </children>
+                  </FlowPane>
+            <VBox prefHeight="189.0" prefWidth="700.0">
+               <children>
+                  <FlowPane alignment="CENTER" hgap="300.0" prefHeight="195.0" prefWidth="700.0">
+                     <children>
+                        <Button fx:id="viewDeckButton" mnemonicParsing="false" text="View Deck" />
+                        <Button fx:id="viewUnitsButton" mnemonicParsing="false" text="View Units" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </VBox>
+            </children>
+        </VBox>
+      <TextArea fx:id="overlayTextArea" editable="false" prefHeight="515.0" prefWidth="700.0" visible="false" />
+    </children>
+</AnchorPane>
