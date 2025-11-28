@@ -25,7 +25,12 @@ public class Recipe {
     }
 
     public Unit completeRecipe() {
-        return new Unit();
+        UnitBuilderInterface buildUnit = new UnitBuilder();
+        buildUnit.setName(recipeName);
+        buildUnit.setAttack(attack);
+        buildUnit.setBaseHP(baseHP);
+        buildUnit.setAbility(ability);
+        return buildUnit.build();
     }
 
     public void printRecipe() {

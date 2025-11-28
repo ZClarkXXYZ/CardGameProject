@@ -53,6 +53,7 @@ public class GameModel {
 
         //ToDO
         //make starting army
+        makeStartingArmy();
 
         //Get list of recipes
         intializeRecipes();
@@ -112,6 +113,16 @@ public class GameModel {
         deck.shuffleDeck();
     }
 
+    public void makeStartingArmy() {
+        UnitBuilderInterface builder = new UnitBuilder();
+        builder.setName("Man");
+        builder.setAttack(2);
+        builder.setBaseHP(2);
+        builder.setAbility("n");
+        army.addUnit(builder.build());
+        army.addUnit(builder.build());
+        army.addUnit(builder.build());
+    }
 
     public void addGold(int moreGold) {
         gold = gold + moreGold;

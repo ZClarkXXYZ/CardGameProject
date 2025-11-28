@@ -11,15 +11,23 @@ public class Unit implements Observer {
         private Army army;
 
     //TODO: finish private constructor with builder code
-    //private Unit(UnitBuilder builder) {}
+    Unit(UnitBuilder builder) {
+        // Extract data from the builder
+        this.name = builder.getName();
+        this.baseHP = builder.getBaseHP();
+        this.hp = builder.getBaseHP();
+        this.attack = builder.getAttack();
+        this.ability = builder.getAbility();
+        this.onDeath = builder.getOnDeath();
 
+        // hasOnDeath calculated from state of onDeath
+        this.hasOnDeath = (onDeath != null & onDeath.length() > 0);
+
+    }
 
     public void setArmy(Army army) {
         this.army = army;
     }
-
-
-
 
     @Override
     public void update(Unit deadUnit){
