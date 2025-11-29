@@ -10,7 +10,7 @@ public class Unit implements Observer {
         private boolean hasOnDeath;
         private Army army;
 
-    //TODO: finish private constructor with builder code
+
     Unit(UnitBuilder builder) {
         // Extract data from the builder
         this.name = builder.getName();
@@ -45,6 +45,12 @@ public class Unit implements Observer {
         if (army != null){
             army.unitDeath(this);
         }
+    }
+
+    //from shop item
+    public void buffUnit(int i) {
+        baseHP = baseHP + 1;
+        attack = attack + 1;
     }
 
 }

@@ -37,5 +37,4 @@ public class Card implements CardInterface{
     public String getCardName() {
         return(cardName);
     }
-
 }

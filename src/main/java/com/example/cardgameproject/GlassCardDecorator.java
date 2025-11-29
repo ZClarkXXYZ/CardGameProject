@@ -2,7 +2,7 @@ package com.example.cardgameproject;
 
 public class GlassCardDecorator extends CardDecorator{
     //worth x4 for recipes, breaks after use
-    public GlassCardDecorator(Card card) {
+    public GlassCardDecorator(CardInterface card) {
         super(card);
     }
     @Override

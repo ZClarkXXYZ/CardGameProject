@@ -44,5 +44,9 @@ public class Army {
         }
     }
 
-
+    public void buffAllUnits() {
+        for (int i = 0; i < units.size(); i++) {
+            units.get(i).buffUnit(1);
+        }
+    }
 }

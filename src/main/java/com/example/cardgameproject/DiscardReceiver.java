@@ -19,7 +19,7 @@ public class DiscardReceiver {
     }
 
     public void discardSelected(){
-        List<Card> selectedCards = hand.getSelectedCards();
+        List<CardInterface> selectedCards = hand.getSelectedCards();
         for (int i = selectedCards.size() -1; i > 0; i--) {
             System.out.println("Discarded: " + selectedCards.get(i).getCardName());
             hand.removeCard(selectedCards.get(i));

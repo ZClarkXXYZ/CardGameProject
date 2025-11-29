@@ -7,28 +7,28 @@ import java.util.Collections;
 
 public class Deck {
     //A Collection of Cards. Stores the cards and corresponding indexes. Is used by GameModel
-    private ArrayList<Card> deck = new ArrayList<Card>();
+    private ArrayList<CardInterface> deck = new ArrayList<CardInterface>();
     private int nextCardIndex = 0;
 
     private Random random = new Random();
 
     //addCard
-    public void addCard(Card card) {
+    public void addCard(CardInterface card) {
         deck.add(card);
     }
 
     //removeCard
-    public void removeCard(Card card) {
+    public void removeCard(CardInterface card) {
         deck.remove(card);
     }
 
     //get deck
-    public ArrayList<Card> getDeck() {
+    public ArrayList<CardInterface> getDeck() {
         return(deck);
     }
 
     //draw next card
-    public Card drawCard() {
+    public CardInterface drawCard() {
         if (deck.size() == 0) {
             return null;
         }

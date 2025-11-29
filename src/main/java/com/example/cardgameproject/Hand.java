@@ -5,11 +5,11 @@ import java.util.List;
 
 
 public class Hand {
-    private List<Card> cards = new ArrayList<>();
-    private List<Card> selectedCards = new ArrayList<>();
+    private List<CardInterface> cards = new ArrayList<>();
+    private List<CardInterface> selectedCards = new ArrayList<>();
 
 
-    public boolean addCard(Card card) {
+    public boolean addCard(CardInterface card) {
         if (!(cards.contains(card))) {
         cards.add(card);
         return true;
@@ -19,7 +19,7 @@ public class Hand {
         }
     }
 
-    public boolean removeCard(Card card) {
+    public boolean removeCard(CardInterface card) {
         return cards.remove(card);
     }
 
@@ -28,11 +28,11 @@ public class Hand {
     }
 
 
-    public List<Card> getHand() {
+    public List<CardInterface> getHand() {
         return cards;
     }
 
-    public void toggleSelectedCard(Card selectedCard) {
+    public void toggleSelectedCard(CardInterface selectedCard) {
         if (selectedCards.contains(selectedCard)) {
             selectedCards.remove(selectedCard);
         }
@@ -43,12 +43,12 @@ public class Hand {
         selectedCards.clear();
     }
 
-    public boolean isSelected(Card selectedCard) {
+    public boolean isSelected(CardInterface selectedCard) {
         return selectedCards.contains(selectedCard);
     }
 
 
-    public List<Card> getSelectedCards() {
+    public List<CardInterface> getSelectedCards() {
         return selectedCards;
     }
 

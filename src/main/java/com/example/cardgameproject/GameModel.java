@@ -52,7 +52,6 @@ public class GameModel {
         //Make starting deck
         makeStartingDeck();
 
-        //ToDO
         //make starting army
         makeStartingArmy();
 
@@ -72,7 +71,7 @@ public class GameModel {
     }
 
 
-    public List<Card> getHand() {
+    public List<CardInterface> getHand() {
         return(hand.getHand());
     }
 
@@ -80,11 +79,11 @@ public class GameModel {
         return(hand);
     }
 
-    public boolean isCardSelected(Card card) {
+    public boolean isCardSelected(CardInterface card) {
         return(hand.isSelected(card));
     }
 
-    public void selectCard(Card card) {
+    public void selectCard(CardInterface card) {
         hand.toggleSelectedCard(card);
         System.out.println("Toggled: " + card.getCardName());
     }
@@ -108,7 +107,7 @@ public class GameModel {
     }
 
 
-    public List<Card> getDeck() {
+    public List<CardInterface> getDeck() {
         return(deck.getDeck());
     }
 
@@ -152,7 +151,44 @@ public class GameModel {
     }
 
 
-    public void removeCardFromDeck(Card card) {
+    public void removeCardFromDeck(CardInterface card) {
         deck.removeCard(card);
+    }
+
+    public void buffAllUnits() {
+        army.buffAllUnits();
+    }
+
+    public void increaseMaxPlays() {
+        maxPlays = maxPlays + 1;
+    }
+    public void increseeMaxDiscards() {
+        maxDiscards = maxDiscards + 1;
+    }
+
+    public void addCardToDeck(CardInterface card) {
+        deck.addCard(card);
+    }
+
+    public String getCardNameFromCode(String code) {
+        if (code.equals("W")) {
+            return("Wheat");
+        }
+        if (code.equals("S")) {
+            return("Stone");
+        }
+        if (code.equals("F")) {
+            return("Fire");
+        }
+        if (code.equals("A")) {
+            return("Water");
+        }
+        if (code.equals("C")) {
+            return("Crystal");
+        }
+        if (code.equals("L")) {
+            return("Wood");
+        }
+        return "";
     }
 }

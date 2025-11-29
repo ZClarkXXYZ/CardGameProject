@@ -1,9 +1,9 @@
 package com.example.cardgameproject;
 
 public abstract class CardDecorator implements CardInterface{
-    protected Card decoratedCard;
+    protected CardInterface decoratedCard;
 
-    public CardDecorator(Card card) {
+    public CardDecorator(CardInterface card) {
         this.decoratedCard = card;
     }
 

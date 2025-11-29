@@ -2,7 +2,7 @@ package com.example.cardgameproject;
 
 public class GoldenDecorator extends CardDecorator{
     //gives +3 gold when played. removes all gold when discarded
-    public GoldenDecorator(Card card) {
+    public GoldenDecorator(CardInterface card) {
         super(card);
     }
 

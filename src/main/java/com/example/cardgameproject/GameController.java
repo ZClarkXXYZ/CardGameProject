@@ -88,7 +88,7 @@ public class GameController implements Initializable{
         //update the hand
         handFlowPane.getChildren().clear(); //clear hand, add the card images
 
-        List<Card> hand = game.getHand();
+        List<CardInterface> hand = game.getHand();
         Platform.runLater(() -> {for (int i = 0; i < hand.size(); i++) {
             handFlowPane.getChildren().add(getImageViewFromCard(hand.get(i), game.isCardSelected(hand.get(i))));
             //System.out.println(hand.get(i).cardName);
@@ -117,7 +117,7 @@ public class GameController implements Initializable{
         String overlayText = "";
         overlayTextArea.setText(overlayText);
         //set text to current deck
-        List<Card> deck = game.getDeck();
+        List<CardInterface> deck = game.getDeck();
         for (int i = 0; i < deck.size(); i++) {
             overlayText = overlayText + deck.get(i).getCardName() + "\n";
         }
@@ -130,7 +130,7 @@ public class GameController implements Initializable{
         //set text to current army
     }
 
-    public ImageView getImageViewFromCard(Card card, boolean isSelected) {
+    public ImageView getImageViewFromCard(CardInterface card, boolean isSelected) {
         //add effects, and get correct card image
         ImageView cardImage = new ImageView();
         cardImage.setImage(new Image(Card.class.getResourceAsStream(getImageFromCard(card))));
@@ -162,17 +162,17 @@ public class GameController implements Initializable{
         dropshadow.setHeight(30);
         cardImage.setEffect(dropshadow);
 
-        if (card.cardName.contains("Shiny")) {
+        if (card.getCardName().contains("Shiny")) {
             Bloom bloom = new Bloom();
             bloom.setThreshold(0);
             cardImage.setEffect(bloom);
         }
-        if (card.cardName.contains("Golden")) {
+        if (card.getCardName().contains("Golden")) {
             SepiaTone sepia = new SepiaTone();
             sepia.setLevel(1);
             cardImage.setEffect(sepia);
         }
-        if (card.cardName.contains("Glass")) {
+        if (card.getCardName().contains("Glass")) {
             Reflection reflection = new Reflection();
             reflection.setFraction(0.75);
             reflection.setBottomOpacity(0);
@@ -182,23 +182,23 @@ public class GameController implements Initializable{
         return(cardImage);
     }
 
-    public String getImageFromCard(Card card) {
-        if (card.cardName.contains("Wheat")) {
+    public String getImageFromCard(CardInterface card) {
+        if (card.getCardName().contains("Wheat")) {
             return("images/cardWheat.png");
         }
-        if (card.cardName.contains("Fire")) {
+        if (card.getCardName().contains("Fire")) {
             return("images/cardFire.png");
         }
-        if (card.cardName.contains("Water")) {
+        if (card.getCardName().contains("Water")) {
             return("images/cardWater.png");
         }
-        if (card.cardName.contains("Wood")) {
+        if (card.getCardName().contains("Wood")) {
             return("images/cardWood.png");
         }
-        if (card.cardName.contains("Stone")) {
+        if (card.getCardName().contains("Stone")) {
             return("images/cardStone.png");
         }
-        if (card.cardName.contains("Crystal")) {
+        if (card.getCardName().contains("Crystal")) {
             return("images/cardCrystal.png");
         }
         return("images/cardGold.png");
