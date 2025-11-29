@@ -9,8 +9,14 @@ public class Hand {
     private List<Card> selectedCards = new ArrayList<>();
 
 
-    public void addCard(Card card) {
+    public boolean addCard(Card card) {
+        if (!(cards.contains(card))) {
         cards.add(card);
+        return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean removeCard(Card card) {
@@ -33,6 +39,10 @@ public class Hand {
         else {selectedCards.add(selectedCard);}
     }
 
+    public void clearSelectedCards() {
+        selectedCards.clear();
+    }
+
     public boolean isSelected(Card selectedCard) {
         return selectedCards.contains(selectedCard);
     }
@@ -51,5 +61,9 @@ public class Hand {
         for (int i = 0; i < cards.size(); i++) {
             System.out.println(selectedCards.get(i).getCardName());
         }
+    }
+
+    public int getHandSize() {
+        return cards.size();
     }
 }

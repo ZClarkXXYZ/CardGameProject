@@ -66,6 +66,8 @@ public class GameController implements Initializable{
 
         discardButton.setOnMouseClicked(Event -> {
             //discard selected cards in hand
+            game.discardSelectedCards();
+            updateHand();
         });
 
         viewUnitsButton.setOnAction(Event -> {
@@ -89,7 +91,7 @@ public class GameController implements Initializable{
         List<Card> hand = game.getHand();
         Platform.runLater(() -> {for (int i = 0; i < hand.size(); i++) {
             handFlowPane.getChildren().add(getImageViewFromCard(hand.get(i), game.isCardSelected(hand.get(i))));
-            System.out.println(hand.get(i).cardName);
+            //System.out.println(hand.get(i).cardName);
         }});
         //handFlowPane.requestLayout();
 

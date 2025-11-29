@@ -1,5 +1,8 @@
 package com.example.cardgameproject;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Recipe {
     String recipeName;
     String recipeCode;
@@ -35,6 +38,14 @@ public class Recipe {
 
     public void printRecipe() {
         System.out.println("Code: " +recipeCode + "   Unit: " + recipeName + "   stats: " + baseHP + "/" + attack + "  ability: " + ability);
+    }
+
+    public boolean compareCode(String code) {
+        char[] array = code.toCharArray();
+        Arrays.sort(array);
+        String sortedCode = new String(array);
+
+        return(recipeCode.equals(sortedCode));
     }
 
 

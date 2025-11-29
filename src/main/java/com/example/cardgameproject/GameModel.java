@@ -35,6 +35,7 @@ public class GameModel {
 
     private int gold;
 
+    private ButtonInvoker buttonInvoker = new ButtonInvoker();
 
 
     public void gameInitialize() {
@@ -64,13 +65,19 @@ public class GameModel {
 
     public void drawHand() {
         //draw X cards to hand from deck
-        for (int i = 0; i < handSize; i++) {
+        while (hand.getHand().size() < handSize) {
             hand.addCard(deck.drawCard());
         }
         //hand.printHand(); //testing print
-    };
+    }
+
+
     public List<Card> getHand() {
         return(hand.getHand());
+    }
+
+    public Hand getHandObject() {
+        return(hand);
     }
 
     public boolean isCardSelected(Card card) {
@@ -80,6 +87,16 @@ public class GameModel {
     public void selectCard(Card card) {
         hand.toggleSelectedCard(card);
         System.out.println("Toggled: " + card.getCardName());
+    }
+
+    public void discardSelectedCards() {
+        System.out.println("Discard!!");
+        if (discardsLeft > 0 && hand.getSelectedCards().size() != 0) {
+            discardsLeft = discardsLeft - 1;
+
+            buttonInvoker.setCommand(new DiscardButtonCommand(new DiscardReceiver()));
+            buttonInvoker.executeCommand();
+        }
     }
 
     public void intializeRecipes() {

@@ -3,34 +3,28 @@ import java.util.List;
 
 public class DiscardReceiver {
     private Hand hand;
-    private Deck discardPile;
+    private GameModel game;
 
-
-    public DiscardReceiver(Hand hand, Deck discardPile) {
-        this.hand = hand;
-        this.discardPile = discardPile;
-
+    public DiscardReceiver() {
+        this.game = GameModel.getInstance();
+        this.hand = game.getHandObject();
     }
 
 
-    public void discard(Card card) {
-
-
-        if (card == null) {
+    public void discard() {
+        if (hand.getSelectedCards().size() == 0) {
             return;
         }
-        boolean discarded = hand.removeCard(card);
-        if (discarded) {
-            discardPile.addCard(card);
-        }
+        discardSelected();
     }
 
     public void discardSelected(){
         List<Card> selectedCards = hand.getSelectedCards();
-        if (selectedCards.size() != 0) {
-            for (int i = 0; i < selectedCards.size(); i++)
-                System.out.print(i);
-                //selectedCards.get(i).discard(selectedCards.get(i));
+        for (int i = selectedCards.size() -1; i > 0; i--) {
+            System.out.println("Discarded: " + selectedCards.get(i).getCardName());
+            hand.removeCard(selectedCards.get(i));
         }
+        hand.clearSelectedCards();
+        game.drawHand();
     }
 }
