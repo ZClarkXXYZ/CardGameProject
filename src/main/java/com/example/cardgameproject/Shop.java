@@ -106,12 +106,15 @@ public class Shop {
     //generate a +1 play or +1 discard
     private void makeShopItem3() {
         int baseCost = 3;
-        int a = random.nextInt(2);
+        int a = random.nextInt(3);
         if (a == 0) { //play
             shopItems.add(new ShopItem(baseCost + 3, "+1 Play", "p"));
         }
         if (a == 1) { //discard
             shopItems.add(new ShopItem(baseCost, "+1 Discard", "d"));
+        }
+        if (a == 2) { //+1 handsize
+            shopItems.add(new ShopItem(baseCost + 2, "+1 Hand Size", "h"));
         }
 
     }
@@ -138,10 +141,13 @@ public class Shop {
             game.increaseMaxPlays();
         }
         else if (rewardCode.equals("d")) {
-            game.increseeMaxDiscards();
+            game.increaseMaxDiscards();
         }
         else if (rewardCode.equals("d")) {
-            game.increseeMaxDiscards();
+            game.increaseMaxDiscards();
+        }
+        else if (rewardCode.equals("h")) {
+            game.increaseHandSize();
         }
 
         else {
@@ -154,10 +160,10 @@ public class Shop {
                     card = new GoldenDecorator(card);
                 }
                 if (decoratorString.equals("s")) {
-
+                    card = new GlassCardDecorator(card);
                 }
                 if (decoratorString.equals("y")) {
-
+                    card = new DoubleValueDecorator(card);
                 }
             }
             game.addCardToDeck(card);

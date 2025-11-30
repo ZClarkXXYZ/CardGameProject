@@ -51,5 +51,6 @@
             </children>
         </VBox>
       <TextArea fx:id="overlayTextArea" editable="false" prefHeight="515.0" prefWidth="700.0" visible="false" />
+      <Label fx:id="goldLabel" layoutX="300.0" layoutY="407.0" prefHeight="48.0" prefWidth="113.0" text="Gold: 100" />
     </children>
 </AnchorPane>

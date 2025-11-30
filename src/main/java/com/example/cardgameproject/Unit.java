@@ -6,8 +6,6 @@ public class Unit implements Observer {
         private int hp;
         private int attack;
         private String ability;
-        private String onDeath;
-        private boolean hasOnDeath;
         private Army army;
 
 
@@ -18,10 +16,6 @@ public class Unit implements Observer {
         this.hp = builder.getBaseHP();
         this.attack = builder.getAttack();
         this.ability = builder.getAbility();
-        this.onDeath = builder.getOnDeath();
-
-        // hasOnDeath calculated from state of onDeath
-        this.hasOnDeath = (onDeath != null & onDeath.length() > 0);
 
     }
 
@@ -30,15 +24,21 @@ public class Unit implements Observer {
     }
 
     @Override
-    public void update(Unit deadUnit){
-        if (!hasOnDeath) {return;}
-
-        if (deadUnit != this){return;}
-
-        System.out.println(name + " triggers their on-death ability: " + onDeath);
+    public void update(){
+        useAbility();
     }
 
+    public void useAbility() {
 
+    }
+
+    public String getAbility() {
+        return ability;
+    }
+
+    public void resetHealth() {
+        hp = baseHP;
+    }
 
     public void death(){
         System.out.println(name + " died.");
@@ -50,8 +50,24 @@ public class Unit implements Observer {
     //from shop item
     public void buffUnit(int i) {
         baseHP = baseHP + 1;
+        hp = hp + 1;
         attack = attack + 1;
     }
+
+
+    //methods for BattleManager system
+    public String getName() {
+        return name;
+    }
+    public void takeDamage(int damage){
+        this.hp -= damage;
+        if (this.hp <= 0){
+            death();
+        }
+    }
+    public int getAttack() {return this.attack;}
+    public int getHP() {return this.hp;}
+    public boolean isAlive() {return this.hp > 0;}
 
 }
 

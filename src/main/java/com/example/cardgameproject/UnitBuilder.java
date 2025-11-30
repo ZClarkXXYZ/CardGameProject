@@ -5,18 +5,13 @@ public class UnitBuilder implements UnitBuilderInterface {
     private int baseHP;
     private int attack;
     private String ability;
-    private String onDeath;
-    private boolean hasOnDeath;
     private Army army;
 
     public UnitBuilder() {
         this.baseHP = 1;
         this.attack = 0;
         this.ability = "";
-        this.onDeath = "";
-        this.hasOnDeath = false;
         this.army = null;
-
         //some defaults
 
     }
@@ -47,17 +42,6 @@ public class UnitBuilder implements UnitBuilderInterface {
         return this;
     }
 
-    @Override
-    public UnitBuilder setOnDeath(String onDeath) {
-        this.onDeath = onDeath;
-        if (!(onDeath.equals(""))) {
-            this.hasOnDeath = true;
-        }
-        else {
-            this.hasOnDeath = false;
-        }
-        return this;
-    }
 
     @Override
     public UnitBuilder setArmy(Army army) {
@@ -109,11 +93,4 @@ public class UnitBuilder implements UnitBuilderInterface {
         return ability;
     }
 
-    public String getOnDeath() {
-        return onDeath;
-    }
-
-    public Army getArmy() {
-        return army;
-    }
 }

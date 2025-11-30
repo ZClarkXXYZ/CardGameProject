@@ -3,7 +3,9 @@ package com.example.cardgameproject;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -13,9 +15,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.image.Image;
 import javafx.scene.effect.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,10 +28,20 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable{
 
     @FXML
+    private VBox mainVBox;
+    @FXML
+    private VBox questVBox;
+    @FXML
+    private VBox shopVBox;
+
+    @FXML
     private TextArea recipeTextArea;
 
     @FXML
     private FlowPane handFlowPane;
+
+    @FXML
+    private TextArea resultTextArea;
 
     @FXML
     private Button viewDeckButton;
@@ -41,6 +56,9 @@ public class GameController implements Initializable{
     private Button viewUnitsButton;
 
     @FXML
+    private Button exitShopButton;
+
+    @FXML
     private FlowPane questFlowPane;
 
     @FXML
@@ -49,11 +67,22 @@ public class GameController implements Initializable{
     @FXML
     private TextArea overlayTextArea;
 
+    @FXML
+    private Label goldLabel;
+
+    @FXML
+    private Label discardsLabel;
+
+    @FXML
+    private Label playsLabel;
+
     GameModel game = GameModel.getInstance();
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         game.gameInitialize();
+        switchToMain();
+        updateRecipeArea();
 
         viewDeckButton.setOnAction(Event -> {
             //view the deck
@@ -62,16 +91,21 @@ public class GameController implements Initializable{
 
         playHandButton.setOnMouseClicked(Event -> {
             //play selected cards in hand
+            game.playSelectedCards();
+            updatePlaysAndDiscards();
+            updateHand();
         });
 
         discardButton.setOnMouseClicked(Event -> {
             //discard selected cards in hand
             game.discardSelectedCards();
+            updatePlaysAndDiscards();
             updateHand();
         });
 
         viewUnitsButton.setOnAction(Event -> {
             //view units
+            showUnits();
         });
 
         overlayTextArea.setVisible(false);
@@ -79,9 +113,21 @@ public class GameController implements Initializable{
             overlayTextArea.setVisible(false);
         });
 
-        updateHand();
-        updateRecipeArea();
-    }
+        resultTextArea.setOnMouseClicked(Event -> {
+            if (resultTextArea.getText().equals("Quest Complete!")) {
+                switchToShop();
+            }
+            else {
+                System.out.println("Game restarted");
+                initialize(url, resourceBundle); //I am not sure what will happen here. ToDo: Test this
+            }
+            resultTextArea.setVisible(false);
+        });
+
+        exitShopButton.setOnAction(Event -> {
+            switchToMain();
+        });
+        }
 
 
     public void updateHand() {
@@ -93,9 +139,42 @@ public class GameController implements Initializable{
             handFlowPane.getChildren().add(getImageViewFromCard(hand.get(i), game.isCardSelected(hand.get(i))));
             //System.out.println(hand.get(i).cardName);
         }});
-        //handFlowPane.requestLayout();
+    }
+
+    public void switchToMain() {
+        shopVBox.setVisible(false);
+        mainVBox.setVisible(true);
+        discardsLabel.setVisible(true);
+        playsLabel.setVisible(true);
+        game.resetMain();
+        updateHand();
+        updatePlaysAndDiscards();
+    }
+
+    public void switchToQuest(){
+        mainVBox.setVisible(false);
+        questVBox.setVisible(true);
+        discardsLabel.setVisible(false);
+        playsLabel.setVisible(false);
+        updateQuestArea();
+    }
+
+    public void switchToShop() {
+        questVBox.setVisible(false);
+        shopVBox.setVisible(true);
+        updateShopArea();
+    }
+
+    public void updatePlaysAndDiscards() {
+        if (game.getPlaysLeft() == 0) {
+            //change to the quest scene
+            switchToQuest();
+        }
+        discardsLabel.setText("Discards left: " + game.getDiscardsLeft());
+        playsLabel.setText("Plays left: " + game.getPlaysLeft());
 
     }
+
 
     public void updateRecipeArea() {
         //update recipe area with able recipes
@@ -108,11 +187,38 @@ public class GameController implements Initializable{
         recipeTextArea.setText(recipeText);
     }
     public void updateShopArea() {
-        //update each shop label with random shop item
+        //update each shop label with random shop items
     }
     public void updateQuestArea() {
-        //update each quest label with random quest
+        //update each quest label with ["random" (but not random really...)] quest
+        List<Quest> quests = game.getNextQuests();
+        questFlowPane.getChildren().clear();
+        for (int i = 0; i < quests.size(); i++) {
+            Label label = new Label(quests.get(i).getDescription());
+            label.setPrefHeight(90);
+            label.setPrefWidth(164);
+            Quest currentQuest = quests.get(i);
+            label.setOnMouseClicked(Event -> {
+                game.setQuest(currentQuest);
+                activateResultsScreen();
+            });
+            questFlowPane.getChildren().add(label);
+        }
     }
+
+    public void activateResultsScreen() {
+        boolean result = game.activateQuest();
+        String resultText = "";
+        if (result) { //won the quest
+            resultText = "Quest Complete!";
+        }
+        else {
+            resultText = "Quest failed, Game Over!";
+        }
+        resultTextArea.setText(resultText);
+        resultTextArea.setVisible(true);
+    }
+
     public void showDeck() {
         String overlayText = "";
         overlayTextArea.setText(overlayText);
@@ -126,8 +232,15 @@ public class GameController implements Initializable{
     }
 
     public void showUnits() {
-        overlayTextArea.setText("");
+        String overlayText = "";
+        overlayTextArea.setText(overlayText);
         //set text to current army
+        List<Unit> army = game.getArmy();
+        for (int i = 0; i < army.size(); i++) {
+            overlayText = overlayText + army.get(i).getName() + " " + army.get(i).getAttack() + "/" + army.get(i).getHP() +  "\n";
+        }
+        overlayTextArea.setText(overlayText);
+        overlayTextArea.setVisible(true);
     }
 
     public ImageView getImageViewFromCard(CardInterface card, boolean isSelected) {

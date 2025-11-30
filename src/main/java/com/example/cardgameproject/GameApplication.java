@@ -11,9 +11,9 @@ public class GameApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene sceneMain = new Scene(fxmlLoader.load());
         stage.setTitle("Card Game");
-        stage.setScene(scene);
+        stage.setScene(sceneMain);
         stage.show();
     }
 

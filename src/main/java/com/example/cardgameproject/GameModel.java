@@ -27,6 +27,9 @@ public class GameModel {
 
     private List<Recipe> recipes;
 
+    private Quest quest;
+    private QuestGiver questGiver= new QuestGiver();
+
     private int handSize;
     private int maxPlays;
     private int playsLeft;
@@ -34,6 +37,7 @@ public class GameModel {
     private int discardsLeft;
 
     private int gold;
+    private int round;
 
     private ButtonInvoker buttonInvoker = new ButtonInvoker();
 
@@ -48,6 +52,7 @@ public class GameModel {
         playsLeft = maxPlays;
 
         gold = 0;
+        round = 1;
 
         //Make starting deck
         makeStartingDeck();
@@ -88,6 +93,16 @@ public class GameModel {
         System.out.println("Toggled: " + card.getCardName());
     }
 
+    public void playSelectedCards() {
+        System.out.println("Play!!");
+        if (playsLeft > 0 && hand.getSelectedCards().size() != 0) {
+            playsLeft = playsLeft - 1;
+
+            buttonInvoker.setCommand(new PlayButtonCommand(new PlayReceiver()));
+            buttonInvoker.executeCommand();
+        }
+    }
+
     public void discardSelectedCards() {
         System.out.println("Discard!!");
         if (discardsLeft > 0 && hand.getSelectedCards().size() != 0) {
@@ -106,10 +121,23 @@ public class GameModel {
         return(recipes);
     }
 
+    public void resetMain() {
+        discardsLeft = maxDiscards;
+        playsLeft = maxPlays;
+        for (Unit unit : army.getArmy()) {
+            unit.resetHealth();
+        }
+    }
+
 
     public List<CardInterface> getDeck() {
         return(deck.getDeck());
     }
+
+    public List<Unit> getArmy() {
+        return(army.getArmy());
+    }
+
 
     public void makeStartingDeck() {
         for (int i = 0; i < 4; i++)
@@ -150,6 +178,13 @@ public class GameModel {
         return gold;
     }
 
+    public int getPlaysLeft() {
+        return playsLeft;
+    }
+
+    public int getDiscardsLeft() {
+        return discardsLeft;
+    }
 
     public void removeCardFromDeck(CardInterface card) {
         deck.removeCard(card);
@@ -162,12 +197,32 @@ public class GameModel {
     public void increaseMaxPlays() {
         maxPlays = maxPlays + 1;
     }
-    public void increseeMaxDiscards() {
+    public void increaseMaxDiscards() {
         maxDiscards = maxDiscards + 1;
+    }
+
+    public void increaseHandSize() {
+        handSize = handSize + 1;
     }
 
     public void addCardToDeck(CardInterface card) {
         deck.addCard(card);
+    }
+
+    public void addUnitToArmy(Unit unit) {
+        army.addUnit(unit);
+    }
+
+    public void setQuest(Quest quest) {
+        this.quest = quest;
+    }
+
+    public List<Quest> getNextQuests() {
+        return questGiver.getNextQuests(round);
+    }
+
+    public boolean activateQuest() {
+        return true;
     }
 
     public String getCardNameFromCode(String code) {
