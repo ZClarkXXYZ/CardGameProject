@@ -1,12 +1,37 @@
 package com.example.cardgameproject;
 
+/**
+ * Filename:    UnitBuilder.java
+ * Purpose:     Implements the Builder pattern for creating Unit objects.
+ *              Provides a fluent interface for setting unit properties
+ *              and handles validation and army registration.
+ *
+ * Design Pattern:
+ * - Builder: simplifies complex Unit construction
+ *
+ *
+ * Usage Example:
+ * Unit knight = new UnitBuilder()
+ *              .setName("Knight")
+ *              .setBaseHP(100)
+ *              .setAttack(15)
+ *              .setArmy(playerArmy)
+ *              .build();
+ *
+ * Author:      [jlg-repo]
+ * Date:        [11/28/2025]
+ */
+
 public class UnitBuilder {
+    // Builder fields - collect data before creating Unit
     private String name;
     private int baseHP;
     private int attack;
     private String ability;
     private String onDeath;
     private Army army;
+
+    //Constructor: initializes builder with defaults
 
     public UnitBuilder() {
         this.baseHP = 1;
@@ -15,37 +40,41 @@ public class UnitBuilder {
         this.onDeath = "";
         this.army = null;
 
-        //some defaults
-
     }
 
     //Setter methods
 
+    // Name
     public UnitBuilder setName(String name) {
         this.name = name;
         return this;
     }
 
+    //BaseHP
     public UnitBuilder setBaseHP(int baseHP) {
         this.baseHP = baseHP;
         return this;
     }
 
+    //Attack power
     public UnitBuilder setAttack(int attack) {
         this.attack = attack;
         return this;
     }
 
+    //Abilities (if any)
     public UnitBuilder setAbility(String ability) {
         this.ability = ability;
         return this;
     }
 
+    // Set an on death effect (if any)
     public UnitBuilder setOnDeath(String onDeath) {
         this.onDeath = onDeath;
         return this;
     }
 
+    //Set the army this unit belongs to
     public UnitBuilder setArmy(Army army) {
         this.army = army;
         return this;

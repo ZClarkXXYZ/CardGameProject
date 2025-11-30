@@ -1,5 +1,17 @@
 package com.example.cardgameproject;
 
+/**
+ * Filename:        BattleManager.java
+ * Purpose:         Randomized battle system. Player and Enemy take turns attacking random units
+ *                  until only one army is left.
+ *
+ * Design Pattern:  None, this is a battle backend.
+ *
+ * Author:          [jlg-repo]
+ * Date:            [11/28/2025]
+ *
+ */
+
 public class BattleManager {
 
     public boolean fightArmy(Army playerArmy, Army enemyArmy) {
