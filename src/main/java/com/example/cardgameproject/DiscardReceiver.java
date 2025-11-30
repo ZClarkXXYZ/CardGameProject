@@ -1,5 +1,8 @@
 package com.example.cardgameproject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiscardReceiver {
     private Hand hand;
     private Deck discardPile;
@@ -9,19 +12,22 @@ public class DiscardReceiver {
         this.discardPile = discardPile;
     }
 
-    public void discard(Card card) {
-        if (card == null) {
+    public void discard(List<Card> cards) {
+        if (cards == null || cards.isEmpty()) {
             return;
         }
 
-        boolean discarded = hand.removeCard(card);
-        if (discarded) {
-            discardPile.addCard(card);
+        for (Card card : cards) {
+            boolean discarded = hand.removeCard(card);
+            if (discarded) {
+                discardPile.addCard(card);
+            }
         }
     }
 
     public void discardSelected(){
-        Card selected = hand.getSelectedCard();
+        List<Card> selected = hand.getSelectedCards();
         discard(selected);
+        hand.deselectAll();
     }
 }

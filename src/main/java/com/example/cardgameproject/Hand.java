@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Hand {
     private List<Card> cards = new ArrayList<>();
-    private Card selectedCard;
+    private List<Card> selectedCards = new ArrayList<>();
 
     public void addCard(Card card) {
         cards.add(card);
     }
 
     public boolean removeCard(Card card) {
+        selectedCards.remove(card);
         return cards.remove(card);
     }
 
@@ -19,11 +20,22 @@ public class Hand {
         return cards;
     }
 
-    public void setSelectedCard(Card selectedCard) {
-        this.selectedCard = selectedCard;
+    public void selectCard(Card card) {
+        if (card == null) {return;}
+        if (cards.contains(card) && !selectedCards.contains(card)) {
+            selectedCards.add(card);
+        }
     }
 
-    public Card getSelectedCard() {
-        return selectedCard;
+    public void deselectCard(Card card) {
+        selectedCards.remove(card);
+    }
+
+    public void deselectAll() {
+        selectedCards.clear();
+    }
+
+    public List<Card> getSelectedCards() {
+        return new ArrayList<>(selectedCards);
     }
 }
