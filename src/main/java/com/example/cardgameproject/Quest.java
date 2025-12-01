@@ -13,7 +13,7 @@ public class Quest {
 
 
     public String getDescription() {
-        return questDescription;
+        return (questDescription + " \n Reward: " + goldReward + " gold");
     }
 
     public Army getEnemyArmy() {

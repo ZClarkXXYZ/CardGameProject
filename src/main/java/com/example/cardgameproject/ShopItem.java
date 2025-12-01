@@ -16,7 +16,7 @@ public class ShopItem {
         return goldCost;
     }
     public String getDescription() {
-        return description;
+        return (description + " \n cost: " + goldCost);
     }
 
 

@@ -32,6 +32,8 @@ public class GameModel {
     private Quest quest;
     private QuestGiver questGiver= new QuestGiver();
 
+    private Shop shop;
+
     private int handSize;
     private int maxPlays;
     private int playsLeft;
@@ -157,12 +159,36 @@ public class GameModel {
     public void addGold(int moreGold) {
         gold = gold + moreGold;
     }
+
     public void resetGold() {
         gold = 0;
         System.out.println("Gold Reset");
     }
+
+    public Shop getShop() {
+        return shop;
+    }
+
     public int getGold() {
         return gold;
+    }
+
+    public void restockShop() {
+        if (shop == null) {
+            shop = new Shop();
+        }
+        shop.restockShop();
+    }
+
+    public boolean buyShopItem(ShopItem shopItem) {
+        if (shopItem.getGoldCost() <= gold) {
+            shop.resolveReward(shopItem.getReward());
+            System.out.println("Bought Shop Item: " + shopItem.getDescription());
+            addGold(-(shopItem.getGoldCost()));
+            return(true);
+        }
+        System.out.println("Not enough gold");
+        return(false);
     }
 
     public int getPlaysLeft() {
@@ -200,6 +226,7 @@ public class GameModel {
     }
 
     public void addUnitToArmy(Unit unit) {
+        System.out.println("Added Unit: " + unit.getName());
         army.addUnit(unit);
     }
 
@@ -214,7 +241,11 @@ public class GameModel {
     public boolean activateQuest() {
         System.out.println("Quest Activated: " + quest.getDescription());
         round = round + 1;
-        return(battleManager.fightArmy(army, quest.getEnemyArmy()));
+        boolean result = battleManager.fightArmy(army, quest.getEnemyArmy());
+        if (result) {
+            addGold(quest.getGoldReward());
+        }
+        return(result);
     }
     public void makeStartingDeck(int deckType) {
         deck.resetDeck();

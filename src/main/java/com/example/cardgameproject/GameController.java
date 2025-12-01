@@ -217,22 +217,44 @@ public class GameController implements Initializable{
         recipeTextArea.setText(recipeText);
     }
     public void updateShopArea() {
+        updateGoldLabel();
         //update each shop label with random shop items
+        game.restockShop();
+        Shop shop = game.getShop();
+        shopFlowPane.getChildren().clear();
+        for (int i = 0; i < shop.getShopItems().size(); i++) {
+            ShopItem currentShopItem = shop.getShopItems().get(i);
+            Button shopButton = new Button(currentShopItem.getDescription());
+            shopButton.setPrefHeight(90);
+            shopButton.setPrefWidth(164);
+            shopButton.setOnAction(Event -> {
+                if (game.buyShopItem(currentShopItem)) {
+                    shopFlowPane.getChildren().remove(shopButton);
+                    updateGoldLabel();
+                }
+            });
+            shopFlowPane.getChildren().add(shopButton);
+        }
+
     }
+    public void updateGoldLabel() {
+        goldLabel.setText("Gold: " + String.valueOf(game.getGold()));
+    }
+
     public void updateQuestArea() {
         //update each quest label with ["random" (but not random really...)] quest
         List<Quest> quests = game.getNextQuests();
         questFlowPane.getChildren().clear();
         for (int i = 0; i < quests.size(); i++) {
-            Label label = new Label(quests.get(i).getDescription());
-            label.setPrefHeight(90);
-            label.setPrefWidth(164);
+            Button questButton = new Button(quests.get(i).getDescription());
+            questButton.setPrefHeight(90);
+            questButton.setPrefWidth(164);
             Quest currentQuest = quests.get(i);
-            label.setOnMouseClicked(Event -> {
+            questButton.setOnAction(Event -> {
                 game.setQuest(currentQuest);
                 activateResultsScreen();
             });
-            questFlowPane.getChildren().add(label);
+            questFlowPane.getChildren().add(questButton);
         }
     }
 

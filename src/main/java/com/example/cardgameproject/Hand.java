@@ -35,8 +35,12 @@ public class Hand {
     public void toggleSelectedCard(CardInterface selectedCard) {
         if (selectedCards.contains(selectedCard)) {
             selectedCards.remove(selectedCard);
+            System.out.println("deselected");
         }
-        else {selectedCards.add(selectedCard);}
+        else {
+            selectedCards.add(selectedCard);
+            System.out.println("selected");
+        }
     }
 
     public void clearSelectedCards() {

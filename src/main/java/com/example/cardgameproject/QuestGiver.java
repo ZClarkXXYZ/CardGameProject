@@ -14,13 +14,13 @@ public class QuestGiver {
 
         if (round == 1) {
             //quest 1-1
-            unitBuilder.setBaseHP(7);
-            unitBuilder.setAttack(4);
+            unitBuilder.setBaseHP(4);
+            unitBuilder.setAttack(3);
             unitBuilder.setName("Monkey");
             unitBuilder.setArmy(enemyArmy1);
             for (int i = 0; i < 3; i++) {
             enemyArmy1.addUnit(unitBuilder.build()); }
-            quests.add(new Quest("Band of Monkeys \n 3x 4/7 Monkey", enemyArmy1, 7));
+            quests.add(new Quest("Band of Monkeys \n 3x 3/4 Monkey", enemyArmy1, 5));
 
             //quest 1-2
             unitBuilder.setBaseHP(13);
