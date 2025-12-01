@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Hand {
     private List<Card> cards = new ArrayList<>();   // Cards currently in hand
-    private Card selectedCard;                      // Currently selected card
+    private List<Card> selectedCards = new ArrayList<>();
 
     // Adds a card to the hand
     public void addCard(Card card) {
@@ -25,6 +25,7 @@ public class Hand {
 
     // Removes a card from the hand
     public boolean removeCard(Card card) {
+        selectedCards.remove(card);
         return cards.remove(card);
     }
 
@@ -33,13 +34,24 @@ public class Hand {
         return cards;
     }
 
-    //Sets which card is currently selected for play/discard
-    public void setSelectedCard(Card selectedCard) {
-        this.selectedCard = selectedCard;
+    public void selectCard(Card card) {
+        if (card == null) {return;}
+        if (cards.contains(card) && !selectedCards.contains(card)) {
+            selectedCards.add(card);
+        }
     }
 
-    // Gets the selected card
-    public Card getSelectedCard() {
-        return selectedCard;
+    public void deselectCard(Card card) {
+        selectedCards.remove(card);
+    }
+
+
+
+    public void deselectAll() {
+        selectedCards.clear();
+    }
+
+    public List<Card> getSelectedCards() {
+        return new ArrayList<>(selectedCards);
     }
 }
