@@ -125,6 +125,7 @@ public class GameController implements Initializable{
 
         resultTextArea.setOnMouseClicked(Event -> {
             if (resultTextArea.getText().equals("Quest Complete!")) {
+                game.resetUnits();
                 switchToShop();
             }
             else {

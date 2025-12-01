@@ -28,8 +28,27 @@ public class Unit implements Observer {
         useAbility();
     }
 
+    /*
+    n (none)
+    a (when unit dies, get +1 attack)
+    b (when unit dies, heal to full)
+    c (when unit dies, get +1 base hp, +1 hp
+    d (when unit dies, double attack)
+     */
     public void useAbility() {
-
+        if (ability.equals("a")) {
+            attack = attack+1;
+        }
+        else if (ability.equals("b")) {
+            hp = baseHP;
+        }
+        else if (ability.equals("c")) {
+            baseHP = baseHP + 1;
+            hp = hp + 1;
+        }
+        else if (ability.equals("d")) {
+            attack = attack*attack;
+        }
     }
 
     public String getAbility() {

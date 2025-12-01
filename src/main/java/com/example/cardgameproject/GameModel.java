@@ -127,6 +127,8 @@ public class GameModel {
     public void resetMain() {
         discardsLeft = maxDiscards;
         playsLeft = maxPlays;
+    }
+    public void resetUnits() {
         for (Unit unit : army.getArmy()) {
             unit.resetHealth();
         }
@@ -211,6 +213,7 @@ public class GameModel {
 
     public boolean activateQuest() {
         System.out.println("Quest Activated: " + quest.getDescription());
+        round = round + 1;
         return(battleManager.fightArmy(army, quest.getEnemyArmy()));
     }
     public void makeStartingDeck(int deckType) {
