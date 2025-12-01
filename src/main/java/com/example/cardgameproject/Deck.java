@@ -19,12 +19,16 @@ public class Deck {
 
     //removeCard
     public void removeCard(CardInterface card) {
+        System.out.println("Removing from deck: "+ card.getCardName());
         deck.remove(card);
     }
 
     //get deck
     public ArrayList<CardInterface> getDeck() {
         return(deck);
+    }
+    public void resetDeck() {
+        deck.clear();
     }
 
     //draw next card

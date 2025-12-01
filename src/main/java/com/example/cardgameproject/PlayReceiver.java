@@ -30,6 +30,7 @@ public class PlayReceiver {
         String recipeCode = "";
         for (int i = 0; i < selectedCards.size(); i++) {
             recipeCode = recipeCode + selectedCards.get(i).giveCardValue();
+            selectedCards.get(i).additionalPlayedEffects();
         }
         //check each recipe to see if it matches selected cards
         //Add a unit of a matching recipe, or give a 1/1 if no match

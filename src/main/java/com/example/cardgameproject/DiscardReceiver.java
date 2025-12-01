@@ -22,6 +22,7 @@ public class DiscardReceiver {
         List<CardInterface> selectedCards = hand.getSelectedCards();
         for (int i = 0; i < selectedCards.size(); i++) {
             System.out.println("Discarded: " + selectedCards.get(i).getCardName());
+            selectedCards.get(i).additionalDiscardEffects();
             hand.removeCard(selectedCards.get(i));
         }
         hand.clearSelectedCards();

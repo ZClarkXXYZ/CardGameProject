@@ -22,8 +22,10 @@ public class GameModel {
 
     private Deck deck = new Deck();
     private Hand hand = new Hand();
+    private int startingDeck;
 
     private Army army = new Army();
+    private BattleManager battleManager = new BattleManager();
 
     private List<Recipe> recipes;
 
@@ -42,7 +44,8 @@ public class GameModel {
     private ButtonInvoker buttonInvoker = new ButtonInvoker();
 
 
-    public void gameInitialize() {
+    public void gameInitialize(int chosenDeck) {
+        startingDeck = chosenDeck;
         //set starting variables
         handSize = 5;
         maxPlays = 3;
@@ -55,7 +58,7 @@ public class GameModel {
         round = 1;
 
         //Make starting deck
-        makeStartingDeck();
+        makeStartingDeck(startingDeck);
 
         //make starting army
         makeStartingArmy();
@@ -138,25 +141,6 @@ public class GameModel {
         return(army.getArmy());
     }
 
-
-    public void makeStartingDeck() {
-        for (int i = 0; i < 4; i++)
-            deck.addCard(new Card("W", "Wheat"));
-        for (int i = 0; i < 3; i++) {
-            deck.addCard(new Card("S", "Stone"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.addCard(new Card("L", "Wood"));
-        }
-        for (int i = 0; i < 1; i++) {
-            deck.addCard(new Card("F", "Fire"));
-        }
-        for (int i = 0; i < 1; i++) {
-            deck.addCard(new Card("A", "Water"));
-        }
-        deck.shuffleDeck();
-    }
-
     public void makeStartingArmy() {
         UnitBuilderInterface builder = new UnitBuilder();
         builder.setName("Man");
@@ -173,6 +157,7 @@ public class GameModel {
     }
     public void resetGold() {
         gold = 0;
+        System.out.println("Gold Reset");
     }
     public int getGold() {
         return gold;
@@ -196,13 +181,16 @@ public class GameModel {
 
     public void increaseMaxPlays() {
         maxPlays = maxPlays + 1;
+        System.out.println("increased max plays");
     }
     public void increaseMaxDiscards() {
         maxDiscards = maxDiscards + 1;
+        System.out.println("increased max discards");
     }
 
     public void increaseHandSize() {
         handSize = handSize + 1;
+        System.out.println("increased max hand size");
     }
 
     public void addCardToDeck(CardInterface card) {
@@ -222,7 +210,55 @@ public class GameModel {
     }
 
     public boolean activateQuest() {
-        return true;
+        System.out.println("Quest Activated: " + quest.getDescription());
+        return(battleManager.fightArmy(army, quest.getEnemyArmy()));
+    }
+    public void makeStartingDeck(int deckType) {
+        deck.resetDeck();
+        hand.discardHand();
+        if (deckType == 1) {
+            for (int i = 0; i < 4; i++)
+                deck.addCard(new Card("W", "Wheat"));
+            for (int i = 0; i < 3; i++) {
+                deck.addCard(new Card("S", "Stone"));
+            }
+            for (int i = 0; i < 2; i++) {
+                deck.addCard(new Card("L", "Wood"));
+            }
+            for (int i = 0; i < 1; i++) {
+                deck.addCard(new Card("F", "Fire"));
+            }
+            for (int i = 0; i < 1; i++) {
+                deck.addCard(new Card("A", "Water"));
+            }
+        }
+        else if (deckType == 2) {
+            for (int i = 0; i < 6; i++)
+                deck.addCard(new Card("S", "Stone"));
+            //add decorated cards to starting deck
+            CardInterface cardShiny = new Card("S", "Stone");
+            cardShiny = new DoubleValueDecorator(cardShiny);
+            deck.addCard(cardShiny);
+            CardInterface cardGlass = new Card("S", "Stone");
+            cardGlass = new GlassCardDecorator(cardGlass);
+            deck.addCard(cardGlass);
+            CardInterface cardGold = new Card("S", "Stone");
+            cardGold = new GoldenDecorator(cardGold);
+            deck.addCard(cardGold);
+            deck.addCard(new Card("C", "Crystal"));
+        }
+        else if (deckType == 3) {
+            for (int i = 0; i < 5; i++)
+                deck.addCard(new Card("A", "Water"));
+            for (int i = 0; i < 5; i++)
+                deck.addCard(new Card("F", "Fire"));
+            for (int i = 0; i < 5; i++)
+                deck.addCard(new Card("L", "Wood"));
+        }
+        else {
+            makeStartingDeck(1);
+        }
+        deck.shuffleDeck();
     }
 
     public String getCardNameFromCode(String code) {

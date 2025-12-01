@@ -184,6 +184,17 @@
       <Label fx:id="discardsLabel" layoutX="370.0" layoutY="385.0" prefHeight="23.0" prefWidth="145.0" text="Label" />
       <Label fx:id="playsLabel" layoutX="183.0" layoutY="382.0" prefHeight="23.0" prefWidth="144.0" text="Label" />
       <TextArea fx:id="overlayTextArea" editable="false" layoutY="1.0" prefHeight="515.0" prefWidth="706.0" visible="false" />
+      <VBox fx:id="selectDeckVBox" prefHeight="515.0" prefWidth="706.0">
+         <children>
+            <FlowPane alignment="CENTER" hgap="6.0" prefHeight="510.0" prefWidth="721.0">
+               <children>
+                  <Button fx:id="deckButton1" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Chose Regular Deck" />
+                  <Button fx:id="deckButton2" layoutX="263.0" layoutY="10.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Choose Stone Deck" />
+                  <Button fx:id="deckButton3" layoutX="363.0" layoutY="10.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Choose Elemental Deck" />
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
       <TextArea fx:id="resultTextArea" editable="false" prefHeight="516.0" prefWidth="700.0" text="Quest Win/Quest Lose" visible="false" wrapText="true">
          <opaqueInsets>
             <Insets />

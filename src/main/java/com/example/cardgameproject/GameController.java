@@ -35,6 +35,16 @@ public class GameController implements Initializable{
     private VBox shopVBox;
 
     @FXML
+    private VBox selectDeckVBox;
+    @FXML
+    private Button deckButton1;
+    @FXML
+    private Button deckButton2;
+    @FXML
+    private Button deckButton3;
+
+
+    @FXML
     private TextArea recipeTextArea;
 
     @FXML
@@ -80,9 +90,10 @@ public class GameController implements Initializable{
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        game.gameInitialize();
-        switchToMain();
-        updateRecipeArea();
+        overlayTextArea.setVisible(true);
+        overlayTextArea.setText("Choose Starting Deck");
+        selectDeckVBox.setVisible(true);
+
 
         viewDeckButton.setOnAction(Event -> {
             //view the deck
@@ -108,7 +119,6 @@ public class GameController implements Initializable{
             showUnits();
         });
 
-        overlayTextArea.setVisible(false);
         overlayTextArea.setOnMouseClicked(Event -> {
             overlayTextArea.setVisible(false);
         });
@@ -119,7 +129,7 @@ public class GameController implements Initializable{
             }
             else {
                 System.out.println("Game restarted");
-                initialize(url, resourceBundle); //I am not sure what will happen here. ToDo: Test this
+                initialize(url, resourceBundle);
             }
             resultTextArea.setVisible(false);
         });
@@ -127,8 +137,26 @@ public class GameController implements Initializable{
         exitShopButton.setOnAction(Event -> {
             switchToMain();
         });
-        }
+        deckButton1.setOnAction(Event -> {
+            selectDeckVBox.setVisible(false);
+            startGame(1);
+        });
+        deckButton2.setOnAction(Event -> {
+            selectDeckVBox.setVisible(false);
+            startGame(2);
+        });
+        deckButton3.setOnAction(Event -> {
+            selectDeckVBox.setVisible(false);
+            startGame(3);
+        });
 
+        }
+    public void startGame(int chosenDeck) {
+        overlayTextArea.setVisible(false);
+        game.gameInitialize(chosenDeck);
+        switchToMain();
+        updateRecipeArea();
+    }
 
     public void updateHand() {
         //update the hand
@@ -143,6 +171,7 @@ public class GameController implements Initializable{
 
     public void switchToMain() {
         shopVBox.setVisible(false);
+        questVBox.setVisible(false);
         mainVBox.setVisible(true);
         discardsLabel.setVisible(true);
         playsLabel.setVisible(true);
