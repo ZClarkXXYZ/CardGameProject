@@ -1,5 +1,16 @@
 package com.example.cardgameproject;
 
+/**
+ *  * Filename:    GameController.java
+ *  * Purpose:     JavaFX controller that manages UI interactions for the main
+ *  *              game screen. Handles button clicks and updates displays.
+ *  *
+ *  * FXML File: main.fxml
+ *  *
+ *  * Author:      [author]
+ *  * Date:        [date]
+ */
+
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,31 +26,33 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable{
 
     @FXML
-    private TextArea recipeTextArea;
+    private TextArea recipeTextArea; // Displays available recipes
 
     @FXML
-    private FlowPane handFlowPane;
+    private FlowPane handFlowPane; // Container for hand cards
 
     @FXML
-    private Button viewDeckButton;
+    private Button viewDeckButton; // Button to view full deck
 
     @FXML
-    private ImageView playHandButton;
+    private ImageView playHandButton; // Button to play selected cards
 
     @FXML
-    private ImageView discardButton;
+    private ImageView discardButton; // Button to discard selected cards
 
     @FXML
-    private Button viewUnitsButton;
+    private Button viewUnitsButton;  // Button to view army units
 
     @FXML
-    private FlowPane questFlowPane;
+    private FlowPane questFlowPane; // Container for quests
 
     @FXML
-    private FlowPane shopFlowPane;
+    private FlowPane shopFlowPane; // Container for shop
 
 
+    // Initializes controller after FXML loads
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
 
         viewDeckButton.setOnAction(Event -> {

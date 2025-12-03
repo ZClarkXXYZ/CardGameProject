@@ -14,12 +14,16 @@ package com.example.cardgameproject;
  */
 
 public class DiscardButtonCommand implements ButtonCommand{
-    private DiscardReceiver discardReceiver;
+    private DiscardReceiver discardReceiver;        // The object that performs the discarding
 
+    //TODO: Do we need a card field here?
+
+    // Constructor - creates a discard command for a specific card
     public DiscardButtonCommand(DiscardReceiver discardReceiver) {
         this.discardReceiver = discardReceiver;
     }
 
+    // Discard the card
     @Override
     public void execute() {
         discardReceiver.discardSelected();
