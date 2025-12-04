@@ -19,7 +19,10 @@ public class QuestGiver {
 
     private Quest buildQuest(String difficulty, int gold) {
         Army army = new Army();
-        String description = "";
+        int enemies = 0;
+        String description = "Quest: " + difficulty +
+                "\n Gold: " + gold +
+                "\n Enemies: ";
 
         for (String[] row : enemyRows){
             String diff = row[0].trim();
@@ -37,10 +40,12 @@ public class QuestGiver {
                     .setArmy(army)
                     .build();
 
-            description = "Quest: " + difficulty +
-                    "\n Type: " + type +
-                    "\n Attack/HP: " + atk + "/" + hp +
-                    "\n Gold: " + gold;
+            description += "\n -" + type + " (" + atk + "/" + hp + ")";
+
+            enemies++;
+            if (enemies == 3){
+                break;
+            }
         }
         return new Quest(description, army, gold);
     }
