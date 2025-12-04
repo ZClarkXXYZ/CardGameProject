@@ -23,11 +23,13 @@ public class Shop {
 
 
     public void restockShop() {
+        //this is bad code... If have time, make a builder or factory
         shopItems.clear();
         makeShopItem1();
         makeShopItem2();
         makeShopItem3();
         makeShopItem4();
+        makeShopItem5();
     }
 
     public List<ShopItem> getShopItems() {
@@ -37,7 +39,7 @@ public class Shop {
 
     //generate a card
     private void makeShopItem1() {
-        int baseCost = 2;
+        int baseCost = 1;
         int a = random.nextInt(5);
 
         if (a == 0) { //wheat
@@ -117,7 +119,7 @@ public class Shop {
 
     //generate a +1 play or +1 discard
     private void makeShopItem3() {
-        int baseCost = 3;
+        int baseCost = 5;
         int a = random.nextInt(3);
         if (a == 0) { //play
             shopItems.add(new ShopItem(baseCost + 3, "+1 Play", "p"));
@@ -132,8 +134,22 @@ public class Shop {
     }
 
     private void makeShopItem4() {
-        int baseCost = 5;
+        int baseCost = 6;
         shopItems.add(new ShopItem(baseCost, "+1/+1 to units", "1"));
+    }
+
+    private void makeShopItem5() {
+        int baseCost = 10;
+        int a = random.nextInt(3);
+        if (a == 0) { //add "glass a random card"
+            shopItems.add(new ShopItem(baseCost, "Make random card glass", "glass"));
+        }
+        if (a == 1) { //add "golden a random card"
+            shopItems.add(new ShopItem(baseCost, "Make random card golden", "gold"));
+        }
+        if (a == 2) { //add "shiny a random card"
+            shopItems.add(new ShopItem(baseCost, "Make random card shiny", "shiny"));
+        }
     }
 
 
@@ -146,6 +162,7 @@ public class Shop {
      * +1/+1 [units in army gain +1/+1]
      * */
     public void resolveReward(String rewardCode) {
+        //this is ugly, bad code, but it will resolve the reward of shop items.
         if (rewardCode.equals("1")) {
             game.buffAllUnits();
         }
@@ -161,7 +178,24 @@ public class Shop {
         else if (rewardCode.equals("h")) {
             game.increaseHandSize();
         }
-
+        else if (rewardCode.equals("glass")) {
+            CardInterface card = game.getRandomCard();
+            game.removeCardFromDeck(card);
+            card = new GlassCardDecorator(card);
+            game.addCardToDeck(card);
+        }
+        else if (rewardCode.equals("gold")) {
+            CardInterface card = game.getRandomCard();
+            game.removeCardFromDeck(card);
+            card = new GoldenDecorator(card);
+            game.addCardToDeck(card);
+        }
+        else if (rewardCode.equals("shiny")) {
+            CardInterface card = game.getRandomCard();
+            game.removeCardFromDeck(card);
+            card = new DoubleValueDecorator(card);
+            game.addCardToDeck(card);
+        }
         else {
             String cardString = String.valueOf(rewardCode.charAt(0));
             CardInterface card = new Card(cardString, game.getCardNameFromCode(cardString));

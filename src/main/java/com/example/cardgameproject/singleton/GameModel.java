@@ -216,6 +216,11 @@ public class GameModel {
         deck.removeCard(card);
     }
 
+    public CardInterface getRandomCard() {
+        return deck.getRandomCard();
+
+    }
+
     public void buffAllUnits() {
         army.buffAllUnits();
     }

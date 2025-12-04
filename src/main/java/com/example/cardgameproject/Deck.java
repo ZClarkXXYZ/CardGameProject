@@ -61,6 +61,11 @@ public class Deck {
         }
         return(deck.get(nextCardIndex));
     }
+    //gets a random card from the deck (without "drawing"
+    public CardInterface getRandomCard() {
+        CardInterface card = deck.get(random.nextInt(deck.size()));
+        return card;
+    }
 
 
     //shuffle the deck (array list of CardInterface objects)

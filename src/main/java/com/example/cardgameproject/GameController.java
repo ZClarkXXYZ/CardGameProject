@@ -336,6 +336,10 @@ public class GameController implements Initializable{
         glass gets reflection
         */
         DropShadow dropshadow = new DropShadow();
+        Bloom bloom = new Bloom();
+        SepiaTone sepia = new SepiaTone();
+        Reflection reflection = new Reflection();
+
         if (!(isSelected)) {
             dropshadow.setColor(Color.color(0,0,0));
         }
@@ -345,25 +349,34 @@ public class GameController implements Initializable{
         dropshadow.setRadius(30);
         dropshadow.setWidth(30);
         dropshadow.setHeight(30);
-        cardImage.setEffect(dropshadow);
 
         if (card.getCardName().contains("Shiny")) {
-            Bloom bloom = new Bloom();
             bloom.setThreshold(0);
-            cardImage.setEffect(bloom);
+            dropshadow.setInput(bloom);
         }
         if (card.getCardName().contains("Golden")) {
-            SepiaTone sepia = new SepiaTone();
             sepia.setLevel(1);
-            cardImage.setEffect(sepia);
+            if (card.getCardName().contains("Shiny")) {
+                bloom.setInput(sepia);
+            }
+            else {dropshadow.setInput(sepia);}
         }
         if (card.getCardName().contains("Glass")) {
-            Reflection reflection = new Reflection();
             reflection.setFraction(0.75);
             reflection.setBottomOpacity(0);
             reflection.setTopOpacity(0.5);
             cardImage.setEffect(reflection);
+            if (card.getCardName().contains("Golden")) {
+                sepia.setInput(reflection);
+            }
+            else if (card.getCardName().contains("Shiny")) {
+                bloom.setInput(reflection);
+            }
+            else {
+                dropshadow.setInput(reflection);
+            }
         }
+        cardImage.setEffect(dropshadow);
         return(cardImage);
     }
 
