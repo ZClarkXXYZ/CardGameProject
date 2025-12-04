@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.observerAndBuilder;
 
 public class Unit implements Observer {
         private String name;

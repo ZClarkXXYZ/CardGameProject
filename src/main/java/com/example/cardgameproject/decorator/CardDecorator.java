@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.decorator;
 
 public abstract class CardDecorator implements CardInterface{
     protected CardInterface decoratedCard;

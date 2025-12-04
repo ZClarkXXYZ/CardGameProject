@@ -1,7 +1,12 @@
 package com.example.cardgameproject;
 
+import com.example.cardgameproject.observerAndBuilder.Army;
+import com.example.cardgameproject.observerAndBuilder.Unit;
+import com.example.cardgameproject.singleton.GameModel;
+
 public class BattleManager {
     public boolean fightArmy(Army playerArmy, Army enemyArmy) {
+        GameModel game = GameModel.getInstance();
         // Battle will continue while both armies have units
         while (playerArmy.hasUnits() && enemyArmy.hasUnits()) {
             //Player turn
@@ -11,7 +16,8 @@ public class BattleManager {
                 int damage = playerAttacker.getAttack();
                 enemyDefender.takeDamage(damage);
                 // battle log
-                System.out.println(playerAttacker.getName() + " attacks " + enemyDefender.getName() + " for " + damage + " damage");
+                //System.out.println(playerAttacker.getName() + " attacks " + enemyDefender.getName() + " for " + damage + " damage");
+                game.battleLog(playerAttacker.getName() + " attacks " + enemyDefender.getName() + " for " + damage + " damage");
             }
             if (!enemyArmy.hasUnits()) {
                 return true; //player wins
@@ -24,7 +30,8 @@ public class BattleManager {
                 int damage = enemyAttacker.getAttack();
                 playerDefender.takeDamage(damage);
                 //combat log
-                System.out.println(enemyAttacker.getName() + " attacks " + playerDefender.getName() + " for " + damage + " damage");
+                //System.out.println(enemyAttacker.getName() + " attacks " + playerDefender.getName() + " for " + damage + " damage");
+                game.battleLog(enemyAttacker.getName() + " attacks " + playerDefender.getName() + " for " + damage + " damage");
             }
             if (!playerArmy.hasUnits()) {
                 return false; //player loses

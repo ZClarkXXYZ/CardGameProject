@@ -1,4 +1,13 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.adapter;
+
+/**
+ *  Filename:    RecipeAdapter.java
+ *  Purpose:     Adapter that reads recipe data from CSV files and converts
+ *               them into Recipe objects for use in the game.
+ *
+ *  Design Pattern: Adapter - converts CSV data format to Recipe objects
+ *  Author: ZC
+ */
 
 import java.io.FileReader;
 import java.util.ArrayList;

@@ -1,7 +1,23 @@
 package com.example.cardgameproject;
 
+/**
+
+
+ *  * Filename:    Deck.java
+ *  * Purpose:     Manages a collection of cards, and the next card to draw based on an index.
+ *  *              Used for draw deck, discard pile, and deck building.
+ *  *
+ *  * Note: The deckIndexes list appears to track card positions, but the
+ *  *       current implementation always adds the same index. This may need
+ *  *       revision based on intended shuffling/ordering behavior.
+ *  *
+ *  * Author:      [author]
+ *  * Date:        [date]
+ */
+
+import com.example.cardgameproject.decorator.CardInterface;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 import java.util.Collections;
 
@@ -12,21 +28,23 @@ public class Deck {
 
     private Random random = new Random();
 
-    //addCard
+    //add CardInterface to the deck
     public void addCard(CardInterface card) {
         deck.add(card);
     }
 
-    //removeCard
+    //remove CardInterface from the deck
     public void removeCard(CardInterface card) {
         System.out.println("Removing from deck: "+ card.getCardName());
         deck.remove(card);
     }
 
-    //get deck
+    //get the ArrayList of CardInterface object (the "deck" of cards)
     public ArrayList<CardInterface> getDeck() {
         return(deck);
     }
+
+    //Clear the deck
     public void resetDeck() {
         deck.clear();
     }
@@ -45,7 +63,7 @@ public class Deck {
     }
 
 
-    //shuffleDeck
+    //shuffle the deck (array list of CardInterface objects)
     public void shuffleDeck() {
         for (int i = 0; i < deck.size()*3; i ++) {
             int j = random.nextInt(deck.size());

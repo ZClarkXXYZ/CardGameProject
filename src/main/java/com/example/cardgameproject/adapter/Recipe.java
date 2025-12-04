@@ -1,11 +1,29 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.adapter;
 
-import java.lang.reflect.Array;
+/**
+ *  * Filename:    Recipe.java
+ *  * Purpose:     Represents a crafting recipe that combines cards to create rewards.
+ *  *              Recipes are checked when cards are played to determine if the
+ *  *              player has created a valid combination.
+ *  *
+ *  * Recipe Code Format: (describes what cards are needed)
+ *  *   Examples: "FFF" = 3 Fire cards, "WSG" = Water, Stone, Gold
+ *  *
+ *  * Reward Code Format: (describes what Unit player receives)
+ *  *   [recipeCode / Name / a/b/c]   : Give unit with a attack, b hp, c effect
+ *  *
+ *  * Author: ZC
+ */
+
+import com.example.cardgameproject.observerAndBuilder.Unit;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilder;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilderInterface;
+
 import java.util.Arrays;
 
 public class Recipe {
-    String recipeName;
-    String recipeCode;
+    String recipeName; // Display name: [also the name of the unit that will be given from completing recipe]
+    String recipeCode; // Card combination needed, ie. FFF
 
     //For building Unit
     int attack;
@@ -15,8 +33,6 @@ public class Recipe {
     /*
     * [recipeCode / Name / a/b/c] : gives unit, with a/b stats, with c effect
     * */
-
-
     //Constructor
     Recipe(String recipeCode, String recipeName, int attack, int hp, String ability) {
         this.recipeCode = recipeCode;
@@ -27,6 +43,7 @@ public class Recipe {
         this.ability = ability;
     }
 
+    // give the unit from the recipe
     public Unit completeRecipe() {
         UnitBuilderInterface buildUnit = new UnitBuilder();
         buildUnit.setName(recipeName);
@@ -40,6 +57,7 @@ public class Recipe {
         System.out.println("Code: " +recipeCode + "   Unit: " + recipeName + "   stats: " + baseHP + "/" + attack + "  ability: " + ability);
     }
 
+    // checks if the code given is the same as the recipe (arranges the input string alphabetically)
     public boolean compareCode(String code) {
         char[] array = code.toCharArray();
         Arrays.sort(array);

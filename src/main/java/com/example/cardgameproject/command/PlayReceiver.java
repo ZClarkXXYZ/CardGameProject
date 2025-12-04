@@ -1,11 +1,33 @@
-package com.example.cardgameproject;
-import java.util.ArrayList;
+package com.example.cardgameproject.command;
+import com.example.cardgameproject.singleton.GameModel;
+import com.example.cardgameproject.Hand;
+import com.example.cardgameproject.adapter.Recipe;
+import com.example.cardgameproject.decorator.CardInterface;
+import com.example.cardgameproject.observerAndBuilder.Unit;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilder;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilderInterface;
+
 import java.util.List;
 
+/**
+ *  * Filename:    PlayReceiver.java
+ *  * Purpose:     Receiver in the Command pattern. Contains the actual business
+ *  *              logic for playing cards. Moves cards from hand to the played
+ *  *              pile for recipe matching or other game mechanics.
+ *  *
+ *  * Design Pattern: Command pattern - Receiver
+ *  *
+ *  * The receiver knows HOW to play cards. Commands delegate to this class
+ *  * to perform the actual work. Playing cards typically triggers recipe
+ *  * checking and card effects.
+ *  *
+ *  * Author: Christ (Design patter), ZC (some slight tweaks to fit rest of project I think)
+ */
+
 public class PlayReceiver {
-    private Hand hand;
+    private Hand hand; // player's hand
     private GameModel game;
-    private List<Recipe> recipes;
+    private List<Recipe> recipes; //List of recipes that determine what unit gets added to deck based on selected cards
 
 
     public PlayReceiver() {
@@ -16,7 +38,7 @@ public class PlayReceiver {
 
     }
 
-
+    //Checks to see if there any cards selected
     public void play() {
         //fail-safe check
         if (hand.getSelectedCards().size() == 0) {
@@ -25,6 +47,7 @@ public class PlayReceiver {
         playSelected();
     }
 
+    // Plays currently selected cards from hand
     public void playSelected() {
         List<CardInterface> selectedCards = hand.getSelectedCards();
         String recipeCode = "";

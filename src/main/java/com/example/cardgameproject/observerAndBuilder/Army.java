@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.observerAndBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

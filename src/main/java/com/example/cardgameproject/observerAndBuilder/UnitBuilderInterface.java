@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.observerAndBuilder;
 
 public interface UnitBuilderInterface {
     UnitBuilder setName(String name);

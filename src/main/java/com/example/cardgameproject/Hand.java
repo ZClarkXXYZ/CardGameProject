@@ -1,5 +1,7 @@
 package com.example.cardgameproject;
 
+import com.example.cardgameproject.decorator.CardInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 

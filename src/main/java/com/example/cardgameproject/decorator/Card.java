@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.decorator;
 
 public class Card implements CardInterface{
     String cardCode;

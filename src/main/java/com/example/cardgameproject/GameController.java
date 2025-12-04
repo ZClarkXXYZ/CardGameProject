@@ -1,90 +1,104 @@
 package com.example.cardgameproject;
 
+/**
+ *  * Filename:    GameController.java
+ *  * Purpose:     JavaFX controller that manages UI interactions for the main
+ *  *              game screen. Handles button clicks and updates displays.
+*  *
+ *  *
+ *  * FXML File: main.fxml
+ *  *
+ *  * Author: ZC
+ */
+
+import com.example.cardgameproject.adapter.Quest;
+import com.example.cardgameproject.adapter.Recipe;
+import com.example.cardgameproject.decorator.CardInterface;
+import com.example.cardgameproject.observerAndBuilder.Unit;
+import com.example.cardgameproject.singleton.GameModel;
 import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.image.Image;
 import javafx.scene.effect.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
+ // Initializes controller after FXML loads
 public class GameController implements Initializable{
 
     @FXML
-    private VBox mainVBox;
+    private VBox mainVBox; // Container for main playing cards "scene"
     @FXML
-    private VBox questVBox;
+    private VBox questVBox; //Container for quest "scene"
     @FXML
-    private VBox shopVBox;
+    private VBox shopVBox; // Container for shop "scene"
 
     @FXML
-    private VBox selectDeckVBox;
+    private VBox selectDeckVBox; // Container for selecting a deck, contains the deck buttons
     @FXML
-    private Button deckButton1;
+    private Button deckButton1; //chooses deck 1
     @FXML
-    private Button deckButton2;
+    private Button deckButton2; //...
     @FXML
-    private Button deckButton3;
+    private Button deckButton3; //...
 
 
     @FXML
-    private TextArea recipeTextArea;
+    private TextArea recipeTextArea; //Text area the displays all the recipes that are able to be played
 
     @FXML
-    private FlowPane handFlowPane;
+    private FlowPane handFlowPane; //Flow Pane that holds the visual representation of cardInterface objects in the UI
 
     @FXML
-    private TextArea resultTextArea;
+    private TextArea resultTextArea;  // text area to see results of a quest (resets game if lose after clicking)
+
+     @FXML
+     private TextArea battleTextArea;
 
     @FXML
-    private Button viewDeckButton;
+    private Button viewDeckButton;  // Button to view deck
 
     @FXML
-    private ImageView playHandButton;
+    private ImageView playHandButton;  // Button to activate play command
 
     @FXML
-    private ImageView discardButton;
+    private ImageView discardButton;  // Button to activate discard command
 
     @FXML
-    private Button viewUnitsButton;
+    private Button viewUnitsButton;  // Button to view army units
 
     @FXML
-    private Button exitShopButton;
+    private Button exitShopButton; //Button for exiting the "shop scene"
 
     @FXML
-    private FlowPane questFlowPane;
+    private FlowPane questFlowPane; //Flow pane for holding the buttons representing the quests to choose from
 
     @FXML
-    private FlowPane shopFlowPane;
+    private FlowPane shopFlowPane; //Flow pane for holding the buttons representing the shop items to choose from
 
     @FXML
-    private TextArea overlayTextArea;
+    private TextArea overlayTextArea; //Used for viewing units, deck
 
     @FXML
-    private Label goldLabel;
+    private Label goldLabel; //Used in "shop scene," shows how much gold player has
 
     @FXML
-    private Label discardsLabel;
+    private Label discardsLabel; //Shows how many discards a player has
 
     @FXML
-    private Label playsLabel;
+    private Label playsLabel; //Shows how many plays left a player has
 
     GameModel game = GameModel.getInstance();
 
@@ -133,6 +147,8 @@ public class GameController implements Initializable{
                 initialize(url, resourceBundle);
             }
             resultTextArea.setVisible(false);
+            game.clearBattleLog();
+            battleTextArea.setVisible(false);
         });
 
         exitShopButton.setOnAction(Event -> {
@@ -247,8 +263,8 @@ public class GameController implements Initializable{
         questFlowPane.getChildren().clear();
         for (int i = 0; i < quests.size(); i++) {
             Button questButton = new Button(quests.get(i).getDescription());
-            questButton.setPrefHeight(90);
-            questButton.setPrefWidth(164);
+            questButton.setPrefHeight(220);
+            questButton.setPrefWidth(220);
             Quest currentQuest = quests.get(i);
             questButton.setOnAction(Event -> {
                 game.setQuest(currentQuest);
@@ -263,12 +279,16 @@ public class GameController implements Initializable{
         String resultText = "";
         if (result) { //won the quest
             resultText = "Quest Complete!";
+            battleTextArea.setText(game.getBattleLog());
         }
         else {
             resultText = "Quest failed, Game Over!";
+            battleTextArea.setText(game.getBattleLog());
+            battleTextArea.setVisible(true);
         }
         resultTextArea.setText(resultText);
         resultTextArea.setVisible(true);
+        battleTextArea.setVisible(true);
     }
 
     public void showDeck() {
@@ -298,7 +318,7 @@ public class GameController implements Initializable{
     public ImageView getImageViewFromCard(CardInterface card, boolean isSelected) {
         //add effects, and get correct card image
         ImageView cardImage = new ImageView();
-        cardImage.setImage(new Image(Card.class.getResourceAsStream(getImageFromCard(card))));
+        cardImage.setImage(new Image(GameController.class.getResourceAsStream(getImageFromCard(card))));
 
         //toggle selected card on click
         cardImage.setOnMouseClicked(Event -> {

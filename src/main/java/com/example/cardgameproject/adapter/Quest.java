@@ -1,4 +1,6 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.adapter;
+
+import com.example.cardgameproject.observerAndBuilder.Army;
 
 public class Quest {
     String questDescription;

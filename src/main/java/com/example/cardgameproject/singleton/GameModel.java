@@ -1,6 +1,17 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.singleton;
 
-import java.util.ArrayList;
+import com.example.cardgameproject.*;
+import com.example.cardgameproject.adapter.Quest;
+import com.example.cardgameproject.adapter.QuestGiver;
+import com.example.cardgameproject.adapter.Recipe;
+import com.example.cardgameproject.adapter.RecipeAdapter;
+import com.example.cardgameproject.command.*;
+import com.example.cardgameproject.decorator.*;
+import com.example.cardgameproject.observerAndBuilder.Army;
+import com.example.cardgameproject.observerAndBuilder.Unit;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilder;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilderInterface;
+
 import java.util.List;
 
 public class GameModel {
@@ -42,6 +53,8 @@ public class GameModel {
 
     private int gold;
     private int round;
+
+    private String combateLog = "";
 
     private ButtonInvoker buttonInvoker = new ButtonInvoker();
 
@@ -294,6 +307,19 @@ public class GameModel {
         }
         deck.shuffleDeck();
     }
+
+    public void battleLog(String log) {
+        combateLog = combateLog + log + "\n";
+    }
+
+    public void clearBattleLog() {
+        combateLog = "";
+    }
+
+    public String getBattleLog() {
+        return combateLog;
+    }
+
 
     public String getCardNameFromCode(String code) {
         if (code.equals("W")) {
