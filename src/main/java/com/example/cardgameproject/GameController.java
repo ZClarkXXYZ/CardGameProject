@@ -208,7 +208,12 @@ public class GameController implements Initializable{
 
     public void updateRecipeArea() {
         //update recipe area with able recipes
-        String recipeText = "";
+        String recipeText = "Instructions: \n" +
+                "Play a hand of up to 5 cards matching a recipe from below. \n" +
+                "Glass cards are worth 4x the number of resources. \n" +
+                "Be careful! Not matching a recipe will result in a 1/1 creation! \n" +
+                "\n" +
+                "Recipes: \n";
         List<Recipe> recipes = game.getRecipes();
         for (int i = 0; i < recipes.size(); i++) {
             recipeText = recipeText + recipes.get(i).getTextOfRecipe() + "\n";
