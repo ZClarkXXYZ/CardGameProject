@@ -252,8 +252,8 @@ public class GameController implements Initializable{
         questFlowPane.getChildren().clear();
         for (int i = 0; i < quests.size(); i++) {
             Button questButton = new Button(quests.get(i).getDescription());
-            questButton.setPrefHeight(90);
-            questButton.setPrefWidth(164);
+            questButton.setPrefHeight(220);
+            questButton.setPrefWidth(155);
             Quest currentQuest = quests.get(i);
             questButton.setOnAction(Event -> {
                 game.setQuest(currentQuest);
