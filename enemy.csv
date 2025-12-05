@@ -1,0 +1,31 @@
+difficulty,type,attack,hp
+EASY,Goblin Grunt,1,2
+EASY,Forest Sprite,1,3
+EASY,Wild Boar,1,2
+EASY,Cave Bat,1,1
+EASY,Young Wolf,1,2
+EASY,Thorn Imp,1,1
+EASY,Rat Soldier,1,1
+EASY,Dust Golem,1,3
+EASY,Swamp Toad,1,3
+EASY,Bandit Lookout,1,2
+MEDIUM,Orc Raider,6,8
+MEDIUM,Dire Wolf,7,9
+MEDIUM,Stone Guardian,5,10
+MEDIUM,Bandit Captain,8,7
+MEDIUM,Blood Hawk,6,6
+MEDIUM,Shadow Rogue,9,7
+MEDIUM,Bone Archer,5,8
+MEDIUM,Marsh Troll,10,10
+MEDIUM,Iron Construct,7,9
+MEDIUM,Flame Acolyte,8,6
+HARD,Dragon Whelp,12,14
+HARD,Dread Knight,15,15
+HARD,Storm Elemental,13,12
+HARD,Minotaur Brute,14,15
+HARD,Void Warlock,11,12
+HARD,Ancient Treant,10,15
+HARD,Basilisk,13,14
+HARD,Chaos Reaver,15,13
+HARD,Hydra Spawn,14,15
+HARD,Phantom Assassin,12,11
