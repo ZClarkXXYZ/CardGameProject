@@ -102,6 +102,6 @@ public class Recipe {
 
 
     public String getTextOfRecipe() {
-        return(convertCodeToText(this.recipeCode) + "   Unit: " + recipeName + "   stats: " + baseHP + "/" + attack);
+        return(convertCodeToText(this.recipeCode) + "   Unit: " + recipeName + "   stats: " + attack + "/" + baseHP);
     }
 }
