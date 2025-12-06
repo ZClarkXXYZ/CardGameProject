@@ -154,6 +154,6 @@ src/main/java/com/example/cardgameproject/
 
 ## Contributors:
 
-- Jason (jlg-repo): Builder pattern, BattleManager, Documentation, README, bugfixes
+- Jason (jlg-repo): Builder pattern, BattleManager, Documentation, README, bugfixes, UML diagram
 - Chris:
 - Zach (ZC): 
