@@ -1,12 +1,39 @@
 package com.example.cardgameproject.observerAndBuilder;
 
+/**
+ * Filename:    UnitBuilder.java
+ * Purpose:     Implements the Builder pattern for creating Unit objects.
+ *              Provides a fluent interface for setting unit properties
+ *              and handles validation and army registration.
+ *              Implements UnitBuilderInterface for flexibility and extensibility.
+ *
+ * Design Pattern: Builder - simplifies complex Unit construction with method chaining
+ *
+ * Usage Example:
+ *   Unit knight = new UnitBuilder()
+ *                .setName("Knight")
+ *                .setBaseHP(100)
+ *                .setAttack(15)
+ *                .setAbility("a")  // "n"=none, "a"=+attack, "b"=heal, "c"=+hp, "d"=double attack
+ *                .setArmy(playerArmy)
+ *                .build();
+ *
+ * Note: setAbility() takes ability codes, not descriptions.
+ *       Units are automatically registered as observers if they have abilities.
+ *
+ * Author:      Jason (jlg-repo)
+ */
+
 public class UnitBuilder implements UnitBuilderInterface {
+
+    // Base stats
     private String name;
     private int baseHP;
     private int attack;
-    private String ability;
+    private String ability; // ability codes, ie. "a", "b", etc.
     private Army army;
 
+    // Constructor: initializes builder with default values
     public UnitBuilder() {
         this.baseHP = 1;
         this.attack = 0;

@@ -1,5 +1,16 @@
 package com.example.cardgameproject.decorator;
 
+/**
+ * Filename:    Card.java
+ * Purpose:     Base card implementation. Represents a simple card with a type and name.
+ *              Can be wrapped by decorators to add additional functionality.
+ *              Implements CardInterface.
+ *
+ * Design Pattern: Decorator pattern - Concrete Component
+ *
+ * Author: ZC, jlg-repo (docs)
+ */
+
 public class Card implements CardInterface{
     String cardCode;
     String cardName;

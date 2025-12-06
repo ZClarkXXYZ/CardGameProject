@@ -2,12 +2,11 @@ package com.example.cardgameproject.observerAndBuilder;
 /**
  *  * Filename:    Observer.java
  *  * Purpose:     Observer interface for the Observer design pattern.
- *  *              Observers are notified when units die, allowing them to
- *  *              react with on-death abilities or other triggered effects.
+ *  *              Units implement this to react when any unit in their army dies.
  *  *
  *  * Design Pattern: Observer pattern interface
  *  *
- *  * Implementers: Unit (to trigger on-death abilities)
+ *  * Implementers: Unit (to trigger abilities when any unit dies)
  *  *
  *  * Author: Chris
  *  *

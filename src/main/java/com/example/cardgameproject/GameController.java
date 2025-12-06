@@ -1,14 +1,15 @@
 package com.example.cardgameproject;
 
 /**
- *  * Filename:    GameController.java
- *  * Purpose:     JavaFX controller that manages UI interactions for the main
- *  *              game screen. Handles button clicks and updates displays.
-*  *
- *  *
- *  * FXML File: main.fxml
- *  *
- *  * Author: ZC
+ *  Filename:    GameController.java
+ *  Purpose:     JavaFX controller that manages UI interactions for the main
+ *               game screen. Handles button clicks and updates displays, coordinates with
+ *                  GameModel Singleton
+*
+ *
+ *  FXML File: main.fxml
+ *
+ *  Author: ZC, jgl-repo (docs)
  */
 
 import com.example.cardgameproject.adapter.Quest;

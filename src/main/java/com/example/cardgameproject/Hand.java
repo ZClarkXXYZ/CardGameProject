@@ -1,5 +1,24 @@
 package com.example.cardgameproject;
 
+/**
+ * Filename:    Hand.java
+ * Purpose:     Manages the player's hand of CardInterface objects. Tracks which cards
+ *              are selected for playing or discarding. Supports toggle selection.
+ *
+ * Design Pattern: None - data structure class
+ *
+ * Key Methods:
+ * - addCard(CardInterface): Returns boolean, checks for duplicates
+ * - toggleSelectedCard(CardInterface): Toggle card selection state
+ * - getHand(): Returns List<CardInterface> (not showHand())
+ * - clearSelectedCards(): Deselects all cards
+ * - isSelected(CardInterface): Check if card is selected
+ *
+ * Note: Uses CardInterface (not Card) to support decorated cards
+ *
+ * Author:      ZC, jlg-repo (docs)
+ */
+
 import com.example.cardgameproject.decorator.CardInterface;
 
 import java.util.ArrayList;

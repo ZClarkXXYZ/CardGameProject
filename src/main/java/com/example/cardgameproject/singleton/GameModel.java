@@ -1,5 +1,29 @@
 package com.example.cardgameproject.singleton;
 
+/**
+ * Filename:    GameModel.java
+ * Purpose:     Central game state manager using Singleton pattern. Coordinates all
+ *              game components (deck, hand, army, shop, quests, battle system) and
+ *              ensures only one game instance exists.
+ *
+ * Design Pattern: Singleton - ensures single game state instance across application
+ *
+ * Usage:
+ *   GameModel game = GameModel.getInstance();
+ *   game.gameInitialize(deckChoice);
+ *   game.drawHand();
+ *   List<CardInterface> hand = game.getHand();
+ *
+ * Key Responsibilities:
+ * - Manages deck and hand
+ * - Manages player army and battle system
+ * - Manages quests and recipes
+ * - Manages shop and gold
+ * - Tracks game state (round, plays/discards remaining)
+ *
+ * Author:      ZC, jlg-repo (docs)
+ */
+
 import com.example.cardgameproject.*;
 import com.example.cardgameproject.adapter.Quest;
 import com.example.cardgameproject.adapter.QuestGiver;

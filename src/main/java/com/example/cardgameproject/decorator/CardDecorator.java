@@ -1,5 +1,19 @@
 package com.example.cardgameproject.decorator;
 
+/**
+ * Filename:    CardDecorator.java
+ * Purpose:     Abstract decorator class for cards. Wraps a CardInterface and delegates
+ *              calls to it. Concrete decorators extend this to add behavior.
+ *
+ * Design Pattern: Decorator pattern - Abstract Decorator
+ *
+ * Usage:
+ *   CardInterface card = new Card("W", "Wheat");
+ *   CardInterface goldenCard = new GoldenDecorator(card);
+ *
+ * Author: ZC
+ */
+
 public abstract class CardDecorator implements CardInterface{
     protected CardInterface decoratedCard;
 

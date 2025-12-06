@@ -53,7 +53,6 @@ mvnw.cmd javafx:run
 ./mvnw javafx:run
 ```
 
-That's it!
 
 ---
 
@@ -151,3 +150,10 @@ src/main/java/com/example/cardgameproject/
 - Make sure you're in the CardGameProject folder
 - On Mac/Linux, make mvnw executable: `chmod +x mvnw`
 - Use Maven wrapper to run: `./mvnw javafx:run` (not `java -jar`)
+
+
+## Contributors:
+
+- Jason (jlg-repo): Builder pattern, BattleManager, Documentation, README, bugfixes
+- Chris:
+- Zach (ZC): 

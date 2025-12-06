@@ -3,7 +3,7 @@ package com.example.cardgameproject.decorator;
 /**
  * Filename:    DoubleValueDecorator.java
  * Purpose:     Card decorator that doubles the card's value for recipe matching.
- *              A card with value "F" becomes "FF" when decorated.
+ *              A card with value "F" becomes "FF" when decorated. Known as "shiny cards" in the game.
  * Design Pattern: Concrete Decorator
  * Use Case: Special card enhancement that makes cards more valuable for recipes
  *
