@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.command;
 
 /**
  * Filename:        ButtonCommand.java

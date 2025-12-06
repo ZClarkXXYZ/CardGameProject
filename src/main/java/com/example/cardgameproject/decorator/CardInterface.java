@@ -1,5 +1,4 @@
-package com.example.cardgameproject;
-
+package com.example.cardgameproject.decorator;
 /**
  *  * Filename:    CardInterface.java
  *  * Purpose:     Defines the interface for all cards (base and decorated).
@@ -10,8 +9,7 @@ package com.example.cardgameproject;
  *  *
  *  * Implementers: Card (base), CardDecorator (wrapper for decorators)
  *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ *  * Author: ZC
  */
 
 public interface CardInterface {
@@ -27,4 +25,7 @@ public interface CardInterface {
     // Triggers any applicable effects a card may have from decorators
     // for when the card is discarded specifically
     void additionalDiscardEffects();
+
+    //Gets the stored name of the CardInterface object
+    String getCardName();
 }

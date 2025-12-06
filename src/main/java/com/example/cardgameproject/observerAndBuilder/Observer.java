@@ -1,5 +1,4 @@
-package com.example.cardgameproject;
-
+package com.example.cardgameproject.observerAndBuilder;
 /**
  *  * Filename:    Observer.java
  *  * Purpose:     Observer interface for the Observer design pattern.
@@ -10,12 +9,11 @@ package com.example.cardgameproject;
  *  *
  *  * Implementers: Unit (to trigger on-death abilities)
  *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ *  * Author: Chris
+ *  *
  */
 
+ // Called to update all observer objects to do something (in this case, when a unit dies, units that are in the list of objects to notify are updated)
 public interface Observer {
-
-    // Called when a unit dies. Observers can check if they should react to a unit death
-    public void update(Unit deadUnit);
+    public void update();
 }

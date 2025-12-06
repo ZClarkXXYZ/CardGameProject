@@ -1,57 +1,75 @@
 package com.example.cardgameproject;
 
-/**
- * Filename:        Hand.java
- * Purpose:         Manages the player's hand of cards. Supports adding, removing, displaying cards,
- *                  and tracking which card is currently selected.
- *
- * Author:          [author]
- * Date:            [date]
- *
- *
- */
+import com.example.cardgameproject.decorator.CardInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Hand {
-    private List<Card> cards = new ArrayList<>();   // Cards currently in hand
-    private List<Card> selectedCards = new ArrayList<>();
+    private List<CardInterface> cards = new ArrayList<>();
+    private List<CardInterface> selectedCards = new ArrayList<>();
 
-    // Adds a card to the hand
-    public void addCard(Card card) {
+
+    public boolean addCard(CardInterface card) {
+        if (!(cards.contains(card))) {
         cards.add(card);
-    }
-
-    // Removes a card from the hand
-    public boolean removeCard(Card card) {
-        selectedCards.remove(card);
-        return cards.remove(card);
-    }
-
-    // Returns all cards currently in hand
-    public List<Card> showHand() {
-        return cards;
-    }
-
-    public void selectCard(Card card) {
-        if (card == null) {return;}
-        if (cards.contains(card) && !selectedCards.contains(card)) {
-            selectedCards.add(card);
+        return true;
+        }
+        else {
+            return false;
         }
     }
 
-    public void deselectCard(Card card) {
-        selectedCards.remove(card);
+    public boolean removeCard(CardInterface card) {
+        return cards.remove(card);
+    }
+
+    public void discardHand() {
+        cards.clear();
     }
 
 
+    public List<CardInterface> getHand() {
+        return cards;
+    }
 
-    public void deselectAll() {
+    public void toggleSelectedCard(CardInterface selectedCard) {
+        if (selectedCards.contains(selectedCard)) {
+            selectedCards.remove(selectedCard);
+            System.out.println("deselected");
+        }
+        else {
+            selectedCards.add(selectedCard);
+            System.out.println("selected");
+        }
+    }
+
+    public void clearSelectedCards() {
         selectedCards.clear();
     }
 
-    public List<Card> getSelectedCards() {
-        return new ArrayList<>(selectedCards);
+    public boolean isSelected(CardInterface selectedCard) {
+        return selectedCards.contains(selectedCard);
+    }
+
+
+    public List<CardInterface> getSelectedCards() {
+        return selectedCards;
+    }
+
+    public void printHand() {
+        for (int i = 0; i < cards.size(); i++) {
+            System.out.println(cards.get(i).getCardName());
+        }
+    }
+    public void printSelectedCards() {
+        for (int i = 0; i < cards.size(); i++) {
+            System.out.println(selectedCards.get(i).getCardName());
+        }
+    }
+
+    public int getHandSize() {
+        return cards.size();
     }
 }

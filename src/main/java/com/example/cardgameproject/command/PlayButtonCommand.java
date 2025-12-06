@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.command;
 
 /**
  *  * Filename:    PlayButtonCommand.java
@@ -13,12 +13,12 @@ package com.example.cardgameproject;
  *  *   invoker.setCommand(playCmd);
  *  *   invoker.executeCommand();  // Executes the play action
  *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ *  * Author: Chris (Design pattern)
  */
 
 public class PlayButtonCommand implements ButtonCommand {
     private PlayReceiver playReceiver; // the object that performs the play action
+
 
     // Constructor : creates a play command w/ a receiver
     public PlayButtonCommand(PlayReceiver playReceiver) {

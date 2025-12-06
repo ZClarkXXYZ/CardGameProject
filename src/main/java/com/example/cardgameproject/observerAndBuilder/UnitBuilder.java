@@ -1,80 +1,49 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.observerAndBuilder;
 
-/**
- * Filename:    UnitBuilder.java
- * Purpose:     Implements the Builder pattern for creating Unit objects.
- *              Provides a fluent interface for setting unit properties
- *              and handles validation and army registration.
- *
- * Design Pattern:
- * - Builder: simplifies complex Unit construction
- *
- *
- * Usage Example:
- * Unit knight = new UnitBuilder()
- *              .setName("Knight")
- *              .setBaseHP(100)
- *              .setAttack(15)
- *              .setArmy(playerArmy)
- *              .build();
- *
- * Author:      [jlg-repo]
- * Date:        [11/28/2025]
- */
-
-public class UnitBuilder {
-    // Builder fields - collect data before creating Unit
+public class UnitBuilder implements UnitBuilderInterface {
     private String name;
     private int baseHP;
     private int attack;
     private String ability;
-    private String onDeath;
     private Army army;
-
-    //Constructor: initializes builder with defaults
 
     public UnitBuilder() {
         this.baseHP = 1;
         this.attack = 0;
         this.ability = "";
-        this.onDeath = "";
         this.army = null;
+        //some defaults
 
     }
 
     //Setter methods
 
-    // Name
+    @Override
     public UnitBuilder setName(String name) {
         this.name = name;
         return this;
     }
 
-    //BaseHP
+    @Override
     public UnitBuilder setBaseHP(int baseHP) {
         this.baseHP = baseHP;
         return this;
     }
 
-    //Attack power
+    @Override
     public UnitBuilder setAttack(int attack) {
         this.attack = attack;
         return this;
     }
 
-    //Abilities (if any)
+    @Override
     public UnitBuilder setAbility(String ability) {
         this.ability = ability;
         return this;
     }
 
-    // Set an on death effect (if any)
-    public UnitBuilder setOnDeath(String onDeath) {
-        this.onDeath = onDeath;
-        return this;
-    }
 
-    //Set the army this unit belongs to
+    @Override
     public UnitBuilder setArmy(Army army) {
         this.army = army;
         return this;
@@ -82,6 +51,7 @@ public class UnitBuilder {
     }
 
     //Build method
+    @Override
     public Unit build() {
         if (name == null || name.isEmpty()) {
 
@@ -107,12 +77,20 @@ public class UnitBuilder {
     }
 
     //Getter methods for Unit constructor
-    public String getName() {return name;}
-    public int getBaseHP() {return baseHP;}
-    public int getAttack(){return attack;}
-    public String getAbility() {return ability;}
-    public String getOnDeath() {return onDeath;}
-    public Army getArmy() {return army;}
+    public String getName() {
+        return name;
+    }
 
+    public int getBaseHP() {
+        return baseHP;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public String getAbility() {
+        return ability;
+    }
 
 }

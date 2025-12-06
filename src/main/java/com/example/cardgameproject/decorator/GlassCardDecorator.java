@@ -1,4 +1,6 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.decorator;
+
+import com.example.cardgameproject.singleton.GameModel;
 
 /**
  *  * Filename:    GlassCardDecorator.java
@@ -13,27 +15,28 @@ package com.example.cardgameproject;
  *  *   - "Glass" theme represents fragility
  *  *
  *  * Dependencies: Requires Deck.removeThisCard() method
- *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ *  * Author:      ZC
  */
 
 public class GlassCardDecorator extends CardDecorator{
-    // Constructor: Wraps the card to make it glass (high value, breaks)
     //worth x4 for recipes, breaks after use
-    public GlassCardDecorator(Card card) {
+    public GlassCardDecorator(CardInterface card) {
         super(card);
     }
-    // Decorator method that returns 4x the card value
     @Override
     public String giveCardValue() {
         return(decoratedCard.giveCardValue() + decoratedCard.giveCardValue() + decoratedCard.giveCardValue() + decoratedCard.giveCardValue());
     }
 
     // When played, removes card from the deck
-    //TODO: Implement
     @Override
     public void additionalPlayedEffects() {
-        //Deck.removeThisCard(card); //Not yet implemented
+        GameModel game = GameModel.getInstance();
+        game.removeCardFromDeck(this);
+    }
+
+    @Override
+    public String getCardName() {
+        return("Glass " + decoratedCard.getCardName());
     }
 }

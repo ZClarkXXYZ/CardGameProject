@@ -1,4 +1,4 @@
-package com.example.cardgameproject;
+package com.example.cardgameproject.command;
 
 /**
  *  * Filename:    ButtonInvoker.java
@@ -10,22 +10,27 @@ package com.example.cardgameproject;
  *  * This class can be bound to UI buttons to execute different commands
  *  * without the button needing to know what the command does.
  *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ *  * Author: Chris
  */
 
 public class ButtonInvoker {
-    private ButtonCommand button;   // the command to execute
+    private ButtonCommand button;
 
-    // sets the command to be executed
+
+
     public void setCommand(ButtonCommand command) {
-        this.button = command;
+        //
+        this.button = command; // the command to execute
+
     }
 
     // Executes command stored in the button if it has one
     public void executeCommand() {
+        //
         if (button != null) {
             button.execute();
         }
+
     }
+
 }
