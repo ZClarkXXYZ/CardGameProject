@@ -1,19 +1,19 @@
 package com.example.cardgameproject.command;
 
 /**
- *  * Filename:    PlayButtonCommand.java
- *  * Purpose:     Concrete implementation of ButtonCommand for playing cards.
- *  *              Encapsulates the play action to be executed when the play
- *  *              button is clicked.
- *  *
- *  * Design Pattern: Command pattern - Concrete Command
- *  *
- *  * Usage:
- *  *   ButtonCommand playCmd = new PlayButtonCommand(receiver);
- *  *   invoker.setCommand(playCmd);
- *  *   invoker.executeCommand();  // Executes the play action
- *  *
- *  * Author: Chris (Design pattern)
+ *  Filename:    PlayButtonCommand.java
+ *  Purpose:     Concrete implementation of ButtonCommand for playing cards.
+ *               Encapsulates the play action to be executed when the play
+ *               button is clicked.
+ *
+ *  Design Pattern: Command pattern - Concrete Command
+ *
+ *  Usage:
+ *    ButtonCommand playCmd = new PlayButtonCommand(receiver);
+ *    invoker.setCommand(playCmd);
+ *    invoker.executeCommand();  // Executes the play action
+ *
+ *  Author: Chris (Design pattern)
  */
 
 public class PlayButtonCommand implements ButtonCommand {

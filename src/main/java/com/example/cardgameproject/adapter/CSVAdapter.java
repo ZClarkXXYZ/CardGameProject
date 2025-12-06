@@ -1,5 +1,20 @@
 package com.example.cardgameproject.adapter;
 
+/**
+ * Filename:    CSVAdapter.java
+ * Purpose:     Adapts CSV file format to Java data structures. Reads CSV files
+ *              and returns data as List of String arrays. Skips header row.
+ *
+ * Design Pattern: Adapter pattern - Adapter for external file format
+ *
+ * Usage:
+ *   CSVAdapter adapter = new CSVAdapter();
+ *   List<String[]> rows = adapter.read("enemy.csv");
+ *
+ * Author: Chris (this one was made separately for enemy adapter, ZC didn't originally plan for
+ * multiple adapters)
+ */
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

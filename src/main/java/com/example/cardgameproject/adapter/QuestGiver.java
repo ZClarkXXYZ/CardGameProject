@@ -1,6 +1,24 @@
 package com.example.cardgameproject.adapter;
 
+/**
+ * Filename:    QuestGiver.java
+ * Purpose:     Generates quests by reading enemy data from CSV file (enemy.csv).
+ *              Creates enemy armies with appropriate difficulty levels (EASY, MEDIUM, HARD).
+ *              Uses CSVAdapter to read external data.
+ *
+ * Design Pattern: Adapter pattern - uses CSVAdapter to adapt file format
+ *
+ * CSV Format Expected:
+ *   Difficulty,Type,Attack,HP
+ *   EASY,Goblin,1,2
+ *   MEDIUM,Orc,3,5
+ *   HARD,Dragon,8,10
+ *
+ * Author:      ZC, Chris (modified into part of an adapter pattern)
+ */
+
 import com.example.cardgameproject.observerAndBuilder.Army;
+import com.example.cardgameproject.observerAndBuilder.UnitBuilderInterface;
 import com.example.cardgameproject.observerAndBuilder.UnitBuilder;
 
 import java.util.ArrayList;
@@ -8,7 +26,7 @@ import java.util.List;
 
 public class QuestGiver {
 
-    private UnitBuilder unitBuilder = new UnitBuilder();
+    private UnitBuilderInterface unitBuilder = new UnitBuilder();
     private CSVAdapter adapter = new CSVAdapter();
     private List<String[]> enemyRows;
 

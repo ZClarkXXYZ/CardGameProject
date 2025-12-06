@@ -1,15 +1,15 @@
 package com.example.cardgameproject.command;
 
-/**
- * Filename:        ButtonCommand.java
- * Purpose:         Command interface for button actions. part of Command pattern that separates
- *                  button clicks from their actions.
+ /**
+ * Filename:    ButtonCommand.java
+ * Purpose:     Command pattern interface. Defines the contract for all button commands
+ *              in the game (play, discard, etc.).
  *
- * Design Pattern:  Command pattern interface
+ * Design Pattern: Command pattern interface
  *
- * Author:      [author]
- * Date:        [date]
+ * Implementers: PlayButtonCommand, DiscardButtonCommand
  *
+ * Author: Chris
  */
 
 // Executes command action

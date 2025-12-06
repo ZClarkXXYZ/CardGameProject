@@ -1,5 +1,16 @@
 package com.example.cardgameproject;
 
+/**
+ * Filename:    BattleManager.java
+ * Purpose:     Manages turn-based combat between player and enemy armies.
+ *              Randomly selects units to attack until one army is eliminated.
+ *              Integrates with GameModel for battle logging.
+ *
+ * Design Pattern: None - utility class for battle logic
+ *
+ * Author:      Jason (jlg-repo)
+ */
+
 import com.example.cardgameproject.observerAndBuilder.Army;
 import com.example.cardgameproject.observerAndBuilder.Unit;
 import com.example.cardgameproject.singleton.GameModel;

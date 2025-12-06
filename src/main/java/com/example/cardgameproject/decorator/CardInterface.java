@@ -1,15 +1,15 @@
 package com.example.cardgameproject.decorator;
 /**
- *  * Filename:    CardInterface.java
- *  * Purpose:     Defines the interface for all cards (base and decorated).
- *  *              Ensures cards can provide their value and trigger effects
- *  *              when played or discarded.
- *  *
- *  * Design Pattern: Component interface in Decorator pattern
- *  *
- *  * Implementers: Card (base), CardDecorator (wrapper for decorators)
- *  *
- *  * Author: ZC
+ *  Filename:    CardInterface.java
+ *  Purpose:     Defines the interface for all cards (base and decorated).
+ *               Ensures cards can provide their value and trigger effects
+ *               when played or discarded. Allows cards to be wrapped with additional functionality.
+ *
+ *  Design Pattern: Component interface in Decorator pattern
+ *
+ *  Implementers: Card (base), CardDecorator (wrapper for decorators)
+ *
+ *  Author: ZC
  */
 
 public interface CardInterface {

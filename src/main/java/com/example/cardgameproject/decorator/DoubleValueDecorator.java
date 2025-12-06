@@ -18,7 +18,7 @@ public class DoubleValueDecorator extends CardDecorator{
         super(card);
     }
 
-    //retrns double the card's inital value before the decoration'
+    //returns double the card's initial value before the decoration'
     @Override
     public String giveCardValue() {
         return(decoratedCard.giveCardValue() + decoratedCard.giveCardValue());

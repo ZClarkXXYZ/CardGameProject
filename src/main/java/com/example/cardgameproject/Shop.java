@@ -1,12 +1,17 @@
 package com.example.cardgameproject;
 
 /**
- *  Filename:    Shop.java
- *  Purpose:     Manages the in-game shop where players can purchase cards,
- *               card modifications, or other upgrades using gold.
+ * Filename:    Shop.java
+ * Purpose:     Manages the in-game shop where players can purchase cards,
+ *              card modifications (decorators), or other upgrades using gold.
+ *              Generates random shop items and resolves reward codes.
+ * Reward Codes:
+ * - Card codes: W, S, F, A, L, C (with optional decorators: g, s, y)
+ * - Upgrades: p (+1 play), d (+1 discard), h (+1 hand size)
+ * - Unit buff: 1 (+1/+1 to all units)
+ * - Decorators: glass, gold, shiny (modify random card in deck)
  *
- *  Author: ZC
- *
+ * Author:      ZC
  */
 
 import com.example.cardgameproject.decorator.*;

@@ -1,5 +1,22 @@
 package com.example.cardgameproject;
 
+/**
+ * Filename:    ShopItem.java
+ * Purpose:     Represents an item available for purchase in the shop.
+ *              Contains cost, description, and reward code for Shop to parse.
+ *
+ * Design Pattern: None - data class
+ *
+ * Reward Code Examples:
+ * - "W" = Wheat card
+ * - "Wg" = Golden wheat card
+ * - "p" = +1 play
+ * - "1" = +1/+1 to all units
+ *
+ * Author:      ZC, jlg-repo (docs)
+ * Date:        12/2024
+ */
+
 public class ShopItem {
     int goldCost;
     String description;

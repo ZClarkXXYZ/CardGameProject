@@ -1,18 +1,15 @@
 package com.example.cardgameproject;
 
 /**
-
-
- *  * Filename:    Deck.java
- *  * Purpose:     Manages a collection of cards, and the next card to draw based on an index.
- *  *              Used for draw deck, discard pile, and deck building.
- *  *
- *  * Note: The deckIndexes list appears to track card positions, but the
- *  *       current implementation always adds the same index. This may need
- *  *       revision based on intended shuffling/ordering behavior.
- *  *
- *  * Author:      [author]
- *  * Date:        [date]
+ * Filename:    Deck.java
+ * Purpose:     Manages a deck of CardInterface objects. Handles drawing cards and
+ *              shuffling when the deck runs out. Works with decorated cards.
+ *
+ * Design Pattern: None - data structure class
+ *
+ * Note: Uses CardInterface (not Card) to support decorated cards
+ *
+ * Author:      ZC, jlg-repo (docs)
  */
 
 import com.example.cardgameproject.decorator.CardInterface;

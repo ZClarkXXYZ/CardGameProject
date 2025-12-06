@@ -16,7 +16,7 @@ import java.util.List;
  *  The receiver knows how to discard cards. Commands delegate to this class
  *  to perform the actual work.
  *
- *  Authors: Chris (design pattern, main code), ZC (some modifcations to the code)
+ *  Authors: Chris (design pattern, main code), ZC (some modifications to the code)
  */
 
 public class DiscardReceiver {

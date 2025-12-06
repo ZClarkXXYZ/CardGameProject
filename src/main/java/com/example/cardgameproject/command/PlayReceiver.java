@@ -10,18 +10,18 @@ import com.example.cardgameproject.observerAndBuilder.UnitBuilderInterface;
 import java.util.List;
 
 /**
- *  * Filename:    PlayReceiver.java
- *  * Purpose:     Receiver in the Command pattern. Contains the actual business
- *  *              logic for playing cards. Moves cards from hand to the played
- *  *              pile for recipe matching or other game mechanics.
- *  *
- *  * Design Pattern: Command pattern - Receiver
- *  *
- *  * The receiver knows HOW to play cards. Commands delegate to this class
- *  * to perform the actual work. Playing cards typically triggers recipe
- *  * checking and card effects.
- *  *
- *  * Author: Christ (Design patter), ZC (some slight tweaks to fit rest of project I think)
+* Filename:    PlayReceiver.java
+ *  Purpose:     Receiver in the Command pattern. Contains the actual business
+ *               logic for playing cards. Moves cards from hand to the played
+ *               pile for recipe matching or other game mechanics.
+ *
+ *  Design Pattern: Command pattern - Receiver
+ *
+ *  The receiver knows how to play cards. Commands delegate to this class
+ *  to perform the actual work. Playing cards typically triggers recipe
+ *  checking and card effects.
+ *
+ *  Author: Chris (Design pattern), ZC (made some slight tweaks to fit rest of project)
  */
 
 public class PlayReceiver {
@@ -77,7 +77,7 @@ public class PlayReceiver {
         hand.discardHand();
         game.drawHand();
     }
-
+    // Calls the UnitBuilder through the Interface to build a default unit if you mess up a recipe
     public Unit giveDefaultUnit() {
         UnitBuilderInterface buildUnit = new UnitBuilder();
         buildUnit.setName("Oops");

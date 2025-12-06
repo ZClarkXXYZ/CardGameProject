@@ -1,5 +1,15 @@
 package com.example.cardgameproject.adapter;
 
+/**
+ * Filename:    Quest.java
+ * Purpose:     Represents a quest with a description, enemy army, and gold reward.
+ *              Adapted from Recipe system to work with quest UI.
+ *
+ * Design Pattern: Adapter pattern - Adaptee
+ *
+ * Author: ZC
+ */
+
 import com.example.cardgameproject.observerAndBuilder.Army;
 
 public class Quest {
